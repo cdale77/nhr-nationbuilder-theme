@@ -1,0 +1,74 @@
+<nav id="menu" role="navigation">
+  <ul id="topnav" class="topnav desktop-nav">
+    {% for child in site.root_nav_pages %}
+    {% if child.leaf? or child.nav_children.size == 0 %}
+    <li {% if child.is_or_is_ancestor_of_current_page? %}class="active"{% endif %}>
+      <a href="{{ child.url }}">{{ child.name }}</a>
+    </li>
+    {% else %}
+    <li class="{% if child.is_or_is_ancestor_of_current_page? %}active{% endif %} drop">
+      <a href="{{ child.url }}">{{ child.name }} <i class="icon-angle-down"></i></a>
+      <ul class="sub">
+        {% if site.show_parent_in_nav_dropdown? %}
+        <li class="show-parent"><a href="{{ child.url }}">{{ child.name }}</a></li>
+        {% else %}
+        <li class="show-parent mobile-visible"><a href="{{ child.url }}">{{ child.name }}</a></li>
+        {% endif %}
+        {% for child2 in child.nav_children %}
+        <li><a href="{{ child2.url }}">{{ child2.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% if request.logged_in? %}
+  <div class="user-menu active">
+    <a class="user-menu-profile-link" href="{{ request.current_signup.settings_url }}"><i class="icon-user"></i><i class="icon-angle-down"></i><span>Profile</span></a>
+    <div class="user-menu-sub">
+      <div class="row-fluid">
+        <div class="span3">{{ request.current_signup.bigger_profile_image }}</div>
+        <div class="span9 user-menu-info">
+          <a href="{{ request.current_signup.settings_url }}" class="name" id="name">{{ request.current_signup.name_or_email }}</a><br/>
+          <span class="pc">{{ request.current_signup.capital_amount_format }}</span><br/>
+          {% if site.show_public_profiles? == false %}
+          {% elsif request.current_signup.is_profile_published? %}
+          <a href="{{ request.current_signup.profile_url }}">Public profile</a><br/>
+          {% else %}
+          No public profile<br/>
+          {% endif %}
+          <a href="{{ request.current_signup.logout_url }}">Sign out</a>
+          {% if request.current_signup.has_membership_level_badge %}
+          {% if site.has_membership_page? %}
+          <span class="badge"><a href="{{ site.membership_page.url }}">{{ request.current_signup.membership_level_badge }}</a></span>
+          {% else %}
+          <span class="badge">{{ request.current_signup.membership_level_badge }}</span>
+          {% endif %}
+          {% endif %}
+          {% if request.current_signup.is_banned? %}
+          <span class="">Banned</span>
+          {% elsif request.current_signup.rule_violations_count == 1 %}
+          <span class=""> {{ "fugue-flag-yellow" | icon }} Warning</span>
+          {% elsif request.current_signup.rule_violations_count == 2 %}
+          <span class=""> {{ "fugue-flag" | icon }} 1 violation</span>
+          {% elsif request.current_signup.rule_violations_count == 3 %}
+          <span class=""> {{ "fugue-flag-gray" | icon }} 2 violations</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="user-menu">
+    <a class="user-menu-profile-link" href="/login"><i class="icon-user"></i><i class="icon-angle-down"></i><span>Sign In</span></a>
+    <div class="user-menu-sub">
+      <a class="login-button-facebook" href="{{ request.facebook_connect_url }}"><i class="icon-facebook-squared"></i>Facebook</a>
+      <a class="login-button-twitter" href="{{ request.twitter_connect_url }}"><i class="icon-twitter-squared"></i>Twitter</a>
+      <span>Or sign in with <a href="/login">email</a></span> 
+      <span>Don't have an account? <a href="/login">Register now</a></span>
+    </div>
+  </div>
+  {% endif %}
+</nav>
+
+<a href="#menu" class="menu-link"><i class="icon-menu"></i></a>

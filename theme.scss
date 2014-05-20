@@ -1,0 +1,2268 @@
+/* ============================================================================
+   This is a mobile first stylesheet and it applies to all screen widths.
+   For changes to the desktop or tablet viewports, see tablet-and-desktop.scss.
+   ============================================================================ */
+
+//* style variables *//
+
+// headline font
+$headline-font: "Exo 2", Helvetica, sans-serif;
+
+// main font
+$font: "Open Sans", Helvetica, sans-serif;
+
+$theme-color-1: #9ac760;
+$theme-color-2: #fff;
+$theme-color-3: #1f1f1f;
+$theme-color-4: #2a292b;
+
+// form input area focus color
+$theme-color-5: rgba(226, 92, 51, 0.6);
+
+// header and footer
+$header-background-color: #2e2d2f;
+$header-background-color-2: $theme-color-1;
+$header-color: #fff;
+$background-texture: none;
+$header-texture: none;
+$logo-color: #fff;
+$off-canvas-background-color: #1f1f1f;
+$features-text-color: #2f2f2f;
+$features-background-color: #fff;
+$footer-background-color: $header-background-color;
+$footer-color: $header-color;
+$footer-link-color: $theme-color-1;
+$footer-activities-background-color: darken($header-background-color, 4);
+
+// dropdowns
+$dropdown-background-color: #202020;
+$dropdown-background-hover-color: #575757;
+$dropdown-background-active-color: #2e2d2f;
+$dropdown-color: #fff;
+$dropdown-hover-color: #fff;
+$dropdown-active-color: $theme-color-1;
+$dropdown-accent-color: $theme-color-1;
+
+// subnav
+$subnav-background: #202020;
+$subnav-hover-background: #575757;
+$subnav-active-background: #2e2d2f;
+$subnav-color: #fff;
+$subnav-hover-color: #fff;
+$subnav-active-color: $theme-color-1;
+
+// text
+$text-color: #2f2f2f;
+$link-color: #9ac760;
+$link-hover-color: #787878;
+$link-active-color: #000;
+
+// buttons
+$button-color: #fff;
+$button-background: $theme-color-1;
+$button-hover-color: #fff;
+$button-hover-background: #575757;
+$button-active-color: $theme-color-1;
+$button-active-background: #2e2e30;
+$button-border: 0.4em solid darken($button-background, 15);
+$button-padding: 1.6em;
+$button-radius: 0;
+
+// site nav controls
+$control-color: #fff;
+$control-background: $theme-color-1;
+$control-hover-color: #fff;
+$control-hover-background: #575757;
+$control-active-color: #fff;
+$control-active-background: #2e2d2f;
+$control-radius: 0;
+
+// forms
+$form-color: $text-color;
+$form-background: #f0f0f0;
+
+// shades
+$shade-1: #787878;
+$shade-2: #575757;
+$shade-3: #f4faec;
+$shade-3-text-color: #2e2d2f;
+$shade-3-link-color: #93be5b;
+
+// general success and error colors
+$red: #eb1515;
+$yellow: #ffab34;
+$green: #9ac760;
+$alt: #df9c3c;
+
+//* main responsive components *//
+
+// Meyer-inspired resets
+@import "resets";
+
+@import "custom-mixins";
+
+// border-radius mixin
+@import "border_radius";
+
+// compass css3 mixins
+@import "compass/css3";
+
+// countdown widget for moneybomb page
+@import "framework_countdown2";
+
+// fluid grid
+@import "grid";
+
+// activity and page icons
+@import "icons";
+
+// form elements
+@import "forms";
+
+// buttons
+@import "buttons";
+
+// tooltips
+@import "tooltips";
+
+// tables
+@import "tables";
+
+// pagination
+@import "pagination";
+
+// progress bar
+@import "progress-bar";
+
+// mobile nav
+@import "mobile-nav";
+
+// staged donations
+@import "staged-donations";
+
+// styles for new features
+@import "updates";
+
+// applies border-box to all elements
+
+* {
+  @include box-sizing(border-box);
+}
+
+.clearfix {
+  @include nb-clearfix;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+  color: $form-color;
+}
+
+// headlines
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headline-font;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  line-height: 1.1;
+}
+
+h3 {
+  line-height: 1.25em;
+}
+
+h1 {
+  font-size: 2.25em;
+}
+
+h2 {
+  font-size: 1.75em;
+  border-left: 5px solid $theme-color-1;
+  padding-left: .5em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: .75em;
+  text-transform: uppercase;
+}
+
+.hide {
+  display: none;
+}
+
+// general link styles
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  outline: none;
+  &:hover {
+    color: $link-hover-color;
+  }
+  &:active {
+    color: $link-active-color;
+  }
+}
+
+p {
+  margin-bottom: 1.625em;
+  a {
+    text-decoration: underline;
+  }
+}
+
+hr {
+  border: 0;
+  margin: 0 0 2.25em 0;
+  &:before {
+    content: "\2026";
+    display: block;
+    text-align: center;
+    color: $theme-color-1;
+    font-size: 4em;
+    line-height: .625;
+  }
+}
+
+strong, b {
+  font-weight: 700;
+}
+
+// allows embedded images to expand/contract with viewport
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: none;
+}
+
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  background: $background-texture repeat $theme-color-2;
+  margin: 0;
+  font: 100%/1.625 $font;
+  color: $text-color;
+}
+
+.pattern {
+  overflow-x: hidden;
+}
+
+.width-container {
+  width: 100%;
+  padding: 0 5%;
+  position: relative;
+}
+
+.center {
+  text-align: center;
+}
+
+#content {
+  ul { 
+    list-style-type: disc; 
+    list-style-position: inside; 
+  }
+  ol { 
+    list-style-type: decimal; 
+    list-style-position: inside; 
+  }
+  ul ul, ol ul { 
+    list-style-type: circle; 
+    list-style-position: inside; 
+    margin-left: 1em; 
+  }
+  ol ol, ul ol { 
+    list-style-type: lower-latin; 
+    list-style-position: inside; 
+    margin-left: 1em; 
+  }
+}
+
+// basic padding
+
+.padtopless {
+  padding-top: .3em;
+}
+
+.padtop {
+  padding-top: .75em;
+}
+
+.padtopmore {
+  padding-top: 1em;
+}
+
+.padbottomless {
+  padding-bottom: .3em;
+}
+
+.padbottom {
+  padding-bottom: .75em;
+}
+
+.padbottommore {
+  padding-bottom: 1em;
+}
+
+.fb-like-box iframe {
+  display: block;
+}
+
+// message asking people to check their email to activate account
+
+.activation-message {
+  font-weight: bold;
+  font-size: 18px;
+  color: $theme-color-3;
+}
+
+// style an image with rounded corners
+
+.img-rounded {
+  @include border-radius(6px);
+}
+
+// style an image with a sublte frame
+
+.img-polaroid {
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+// style an image as a circle
+
+.img-circle {
+  @include border-radius(999px);
+}
+
+// add padding around an image
+
+.img-padleft {
+  margin: 5px 0 5px 15px;
+}
+
+.img-padright {
+  margin: 5px 15px 5px 0;
+}
+
+// javascript is used to wrap all iframes in a span called responsive-embed-wrapper to make them responsive
+
+.responsive-embed-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  display: block;
+
+  iframe {
+    display: block;
+  }
+
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.vcard {
+  .tel {
+    display: block;
+  }
+}
+// breadcrumbs
+
+.breadcrumbs {
+  font-size: .75em;
+  margin-bottom: 3.25em;
+  list-style: none;
+  a, .breadcrumbs-current {
+    font-weight: 700;
+  }
+}
+
+.breadcrumbs > li {
+  display: inline-block;
+}
+
+.breadcrumbs > li > .divider {
+  padding: 0 .25em;
+}
+
+.breadcrumbs > .active {
+  color: #999999;
+}
+
+// site title shown in header
+
+.title {
+  color: #fff;
+  font-size: 1.625em;
+  line-height: 1.25;
+  a {
+    color: #fff;
+    vertical-align: middle;
+    display: table-cell;
+  }
+}
+
+// wraps your site name or site logo
+
+header {
+  background: $header-background-color-2;
+  color: $logo-color;
+  float: left;
+  padding: 1em 2em;
+  width: 70%;
+  position:relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -9998px;
+    right: 0;
+    border-left: 0 solid $header-background-color-2;
+    @include box-shadow(9999px 0 0 $header-background-color-2)
+  }
+}
+
+// if the site has a logo, center it above content in mobile view
+
+.site-logo {
+  background: $header-background-color;
+  color: $header-color;
+  a {
+    position: relative;
+    z-index: 99;
+    height: 100%;
+    display: block;
+  }
+  header {
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+// wraps every page headline
+
+#headline, .headline {
+  margin-bottom: .93em;
+  position:relative;
+}
+
+// icon which activates off canvas nav
+
+.menu-link {
+  float: left;
+  display: block;
+  padding: 0;
+  width: 30%;
+  text-align: center;
+  background-color: $header-background-color;
+  position: relative;
+  z-index: 999;
+  @include border-radius(2px);
+  .icon-menu {
+    color: $header-color;
+    font-size: 1.8em;
+  }
+}
+
+// off canvas mobile nav
+
+nav {
+  @include mobile-nav;
+}
+
+// don't show placeholder for fixed nav
+
+.nav-placeholder {
+  display: none;
+}
+
+// dropdown user menu
+
+.user-menu {
+  position: relative;
+  color: $header-color;
+  padding: 1em;
+  .sub {
+    display: block;
+    top: auto;
+  }
+  .profile_image {
+    @include border-radius(999px);
+  }
+  & > a {
+    color: $dropdown-color;
+    text-decoration: underline;
+  }
+  .pc {
+    font-size: 1em;
+  }
+  .user-menu-sub {
+    margin-top: 1em;
+    span a {
+      color: $dropdown-color;
+      text-decoration: underline;
+    }
+    &.active {
+      .user-menu-profile-link {
+        color: $dropdown-color;
+      }
+      a {
+        color: $dropdown-color;
+        text-decoration: underline;
+        &.name {
+          color: $dropdown-color;
+        }
+      }
+    }
+  }
+  .user-menu-profile-link {
+    padding: 0;
+    background-color: transparent;
+    text-decoration: none;
+    i {
+      display: none;
+    }
+  }
+  .user-menu-info {
+    margin-top: 1em;
+    a {
+      color: $dropdown-color;
+      text-decoration: underline;
+      &.name {
+        color: $dropdown-color;
+      }
+    }
+  }
+}
+
+// page layout if the sidebar is turned on
+
+.twocolumn-container {
+  .left-column, .right-column-wide {
+    margin-top: 3.25em;
+  }
+  .right-column, .left-column-narrow {
+    padding-top: 2.25em;
+    margin-top: 3.625em;
+    position: relative;
+    z-index: 5;
+    color: $dropdown-color;
+    .block {
+      position:relative;
+      padding-bottom: 2.25em;
+      margin-bottom: 2.25em;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -9999px;
+        height: 1px;
+        z-index: -1;
+        border-right: 9999px solid lighten($off-canvas-background-color,30);
+        @include box-shadow(9999px 0 0 0 lighten($off-canvas-background-color,30));
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      border-right: 9999px solid $off-canvas-background-color;
+      height: 100%;
+      left: -9999px;
+      top: 0;
+      @include box-shadow(9999px 0 0 $off-canvas-background-color);
+    }
+  }
+}
+
+// page layout if the sidebar is turned off
+
+.onecolumn-container {
+  margin-top: 3.25em;
+  padding-bottom: 3.25em;
+}
+
+.main.width-container {
+  background: $theme-color-2;
+}
+
+// supporter photo shown in supporter nav and user profile
+
+.supporter-pic {
+  margin-bottom: 1.625em;
+  .user-status span {
+    display: inline-block;
+    padding-top: .25em;
+  }
+}
+
+.supporter-pic-left {
+  float: left;
+  display: table-cell;
+  width: 72px;
+  height: 72px;
+  position: relative;
+  margin: 0 .625em 0 0;
+  overflow: hidden;
+  @include border-radius(999px);
+  a {
+    display: block;
+  }
+  img {
+    @include border-radius-top-left(5px);
+    @include border-radius-bottom-left(5px);
+    max-width: 100%;
+  }
+  .pc {
+    display: block;
+    background-color: $theme-color-1;
+    color: $text-color;
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
+}
+
+// supporter info displayed on the right of photo in supporter nav and user profile
+
+.supporter-pic-right {
+  display: table-cell;
+  min-height: 72px;
+  vertical-align: middle;
+  font-size: .75em;
+  line-height: 1.625;
+  .pc {
+    margin: .625em 0 1em 0;
+  }
+  .name {
+    font-size: 1.333em;
+    line-height: 1.25;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: .25em;
+  }
+}
+
+// point person shown in supporter nav, if one is set
+
+.point-pic-left {
+  float: left;
+  height: 48px;
+  margin-right: .5em;
+  @include border-radius(999px);
+  overflow:hidden;
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+.point-pic-right {
+  min-height: 48px;
+  line-height: 1.25em;
+  .byline {
+    margin: .3em 0;
+  }
+  i {
+    font-size: 1em;
+  }
+}
+
+// box which wraps blocks of content in sidebar
+
+.box {
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.submit-button, .submit-link, .success-button, .button {
+  width: 100%;
+  margin-top: 1em;
+}
+
+// email signup which appears in right column if a user is signed out
+
+.email-signup {
+  input.text {
+    min-height: 0;
+    width: 65%;
+    border-radius: 0px;
+    border-right: 0;
+    display: inline-block;
+    margin: .625em 0;
+    border-top-left-radius: $button-radius;
+    border-bottom-left-radius: $button-radius;
+  }
+  .submit-button {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    width: 35%;
+    line-height: 1.75;
+    padding: .81em 1em;
+    margin: 0 0 1.1em 0;
+    border: 0;
+    margin: .77em 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    &.disabled {
+      opacity: 0.45;
+    }
+  }
+}
+
+// activities shown at the bottom of a page, if turned on
+
+.activities {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    margin-bottom: 3.25em;
+    list-style: none;
+    [class^="icon-"] {
+      display: none;
+    }
+    .activity {
+      word-break: break-word;
+      position: relative;
+    }
+    .activity-signup {
+      font-size: .75em;
+    }
+    .stream-pic {
+      display:none;
+    }
+    .icon {
+      display: none;
+    }
+  }
+  .linked-signup-name {
+    display:block;
+  }
+}
+
+// clean formatting for name, activity type and date in page stream in mobile view
+
+ul#page-stream {
+  li.activity  {
+    span + a {
+      display: inline;
+    } 
+  }
+  .activity-time {
+    display: inline;
+  }
+  .timeago {
+    display: inline;
+  }
+  .activity-links a {
+    display: inline;
+  }
+}
+
+// like page content at the bottom of pages
+
+.like-page {
+  clear: both;
+}
+
+//share url input box
+
+.share-url {
+  width: 400px;
+  @include box-sizing(border-box);
+}
+
+// excerpts of activities shown on a user profile page
+
+.page-excerpts {
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    .activity_content_text, .activity_content {
+      margin-top: 1em;
+    }
+    .activity {
+      margin: 0 0 1em 0;
+      // remove if you wish to show icons on activities
+      [class^="icon-"] {
+       display: none;
+      }
+    }
+    .page-excerpt {
+      padding: 1.625em 0 0 1.625em;
+    }
+  }
+}
+
+.excerpt {
+  margin: 1em 0;
+}
+
+.excerpt .submit-button,
+.content-pages-show-moneybomb .submit-button{
+  vertical-align: top;
+}
+
+// list of events on calendar page
+
+.event-wrap {
+  margin: 0;
+  padding: 0;
+  @include nb-clearfix;
+
+  li {
+    margin-bottom: 3.25em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    @include nb-clearfix;
+  }
+}
+
+// 'showing all events' text on calendar page
+
+.map-wrap {
+  .showing-all {
+    text-align: right;
+    font-size: .75em;
+  }
+  img {
+    max-width: none;
+  }
+  .infowindow-headline {
+    font-weight: bold;
+  }
+}
+
+// sign in text under sign up form
+
+.social {
+  font-size: .75em;
+}
+
+//invoices page
+
+.invoices {
+  .amount {
+    text-align: right;
+  }
+  .invoice-total .label {
+    padding-right: .75em;
+  }
+  .expander-content {
+    display: none;
+  }
+}
+
+//moneybomb page
+
+.page-type-moneybomb {
+  .event-detail subhead {
+    text-transform: uppercase;
+  }
+}
+
+//recruiter page
+
+.page-type-recruiting {
+  h4 {
+    font-family: $font;
+  }
+}
+
+// container for entire header area
+
+.header-container {
+  background-color: $header-background-color;
+  color: $header-color;
+  background-image: $header-texture;
+  background-repeat: repeat;
+  z-index: 9999;
+  width: 100%;
+}
+
+// site wide footer
+
+footer {
+  background-color: $footer-background-color;
+  background-image: $header-texture;
+  color: $footer-color;
+  position: relative;
+  z-index: 10;
+  a {
+    color: $footer-link-color;
+  }
+  .footer-text p {
+    margin: 0;
+  }
+  .row-fluid [class*="span"] {
+    min-height: 0;
+  }
+  .footer-right {
+    margin-top: 1em;
+  }
+  .fb_iframe_widget {
+    width: 47px;
+    overflow: hidden;
+  }
+  .footer-social-button {
+    line-height: 20px;
+    margin-top: 1em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .footer-social-links {
+    text-align: center;
+    a:first-child i:before {
+      margin-left: 0;
+    }
+  }
+  &.clearfix:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: -9998px;
+    height: 100%;
+    z-index: -1;
+    border-right: 9999px solid $footer-background-color;
+    @include box-shadow(9999px 0 0 0 $footer-background-color);
+  }
+}
+
+.footer-activities.row-fluid {
+  padding: 1em 0 1.1em 0;
+  z-index: 5;
+  position: relative;
+  [class^="icon-"]:before,
+  [class*=" icon-"]:before,
+  .flex-next:before,
+  .flex-prev:before{
+    font-size: 1.5em;
+    margin: .85em 0 0 0.5em;
+    vertical-align: -25%;
+    color: $header-color;
+  }
+  [class^="icon-"]:hover:before,
+  [class*=" icon-"]:hover:before,
+  .flex-next:hover:before,
+  .flex-prev:hover:before{
+    color: $shade-2;
+  }
+  [class^="icon-"]:active:before,
+  [class*=" icon-"]:active:before,
+  .flex-next:active:before,
+  .flex-prev:active:before{
+    color: $theme-color-1;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    background: $footer-activities-background-color;
+    display: block;
+    top: 0;
+    height: 100%;
+    left: -9999px;
+    z-index: -1;
+    border-right: 9999px solid $footer-activities-background-color;
+    @include box-shadow(9999px 0 0 0 $footer-activities-background-color);
+  }
+}
+
+.footer-content {
+  padding: 2.625em 0;
+  .footer-text {
+    padding-bottom: 2em;
+  }
+}
+
+// byline used in blogs, suggestion boxes, events, etc.
+
+.byline {
+  font-size: .75em;
+  line-height: 1.625;
+  margin-top: .625em;
+  .byline-pic {
+    display: none;
+  }
+}
+
+// supporter nav which is shown if a user is signed in
+
+.supporter-nav {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+    color: $dropdown-color;
+    position:relative;
+    i, span {
+      color: $dropdown-color;
+      margin-left: -1.5em;
+    }
+    &.on, &:hover {
+      background: $theme-color-1;
+      a, i, span {
+        color: $off-canvas-background-color;
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -9999px;
+        right: 0;
+        height: 100%;
+        z-index: -1;
+        border-right: 9999px solid $theme-color-1;
+        @include box-shadow(9999px 0 0 0 $theme-color-1);
+      }
+    }
+    a {
+      padding: .625em 0 .625em 1.5em;
+      display: block;
+      color: $dropdown-color;
+    }
+  }
+}
+
+.button.supporter-nav-button {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.supporter-nav-buttons .supporter-nav-button:first-child {
+  margin-top: 0;
+}
+
+// rules link shown near comment box
+
+.review-rules {
+  display: block;
+  padding: .75em 1em 0 0;
+  font-size: .75em;
+}
+
+// follow page link shown in page stream
+
+.page-follow {
+  font-size: .75em;
+}
+
+// optional header image uploaded in site settings
+
+.header-image {
+  width: 100%;
+}
+
+//message that appears when a form is submitted
+.form-submitting {
+  padding: 15px 7px 0 0;
+  img {
+    margin-right: 6px;
+  }
+}
+
+// suggestion box tags
+
+.tag-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  li {
+    display: inline;
+    line-height: 37px;
+    white-space: nowrap;
+    a {
+      padding: 5px 10px;
+      margin: 0 3px 0 0;
+      text-decoration: none;
+      color: black;
+      text-transform: capitalize;
+      background-color: $theme-color-2;
+      @include border-radius(2px);
+    }
+  }
+  li a:hover {
+    background-color: darken($theme-color-2, 10);
+  }
+  li.current a, li.current a:hover {
+    color: #fff;
+    background-color: $theme-color-1;
+  }
+}
+
+// layout for share buttons at the bottom of most pages
+
+.sharetable {
+  min-height: 39px;
+  .facebook-cell,
+  .twitter-cell,
+  .gplus-cell {
+    float: left;
+    text-align: left;
+    vertical-align: top;
+  }
+  .facebook-cell {
+    padding: 0 20px 15px 0;
+    width: 350px;
+  }
+  .twitter-cell {
+    padding: 0 20px 0 0;
+    width: 75px;
+
+    a {
+      text-indent: -999em;
+      display: inline-block;
+    }
+  }
+  .gplus-cell {
+    width: 52px;
+  }
+}
+
+.like-page {
+  margin-top: 3.25em;
+}
+
+// political/social capital displayed next to names
+
+.pc {
+  background-color: $theme-color-1;
+  color: $text-color;
+  font-size: .75em;
+  font-weight: 700;
+  padding: .2em .625em;
+  display: inline-block;
+  margin: .25em 0;
+}
+
+// yes or no indicator on recuiter page
+
+.off-button-small {
+  font-size: 11px;
+  color: $red;
+}
+
+.on-button-small {
+  font-size: 11px;
+  color: $green;
+}
+
+.subhead {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .75em;
+}
+
+// applied to alerts or warnings
+
+.red {
+  color: $red;
+}
+
+small {
+  font-size: 85%;
+}
+
+// tags users can select on suggestion page
+
+.suggestion-tag-list {
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    margin:  0 0 10px 0;
+  }
+  a {
+    padding: 5px 0 15px 0;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    .tag-count {
+      color: #777;
+    }
+  }
+}
+
+.leaderboard {
+  overflow: hidden;
+  width: 100%;
+  display: block;
+  margin-bottom: 25px;
+  h4 {
+    margin-bottom: 15px;
+  }
+  &.last {
+    margin-bottom: 0;
+  }
+}
+
+// list of people on leaderboards, follows and following pages
+
+.people-list {
+  padding: 11px 10px 13px 10px;
+  width: 100%;
+  margin-bottom: 5px;
+  height: 72px;
+  position: relative;
+  line-height: 1.1;
+  .people-list-pic {
+    margin: -11px 1em 0 -10px;
+    float: left;
+    height: 72px;
+    width: 72px;
+    position: relative;
+  }
+  .people-name {
+    font-weight: bold;
+    max-width: 195px;
+    line-height: 1.1;
+    margin-bottom: .2em;
+  }
+  .leaderboard-rank, .people-pc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $theme-color-3;
+    font-size: .75em;
+    line-height: 1.625;
+    padding: 0 .3em;
+    color: white;
+  }
+  .people-list-follow {
+    text-align: right;
+    font-size: .75em;
+    position: absolute;
+    top: 1.5em;
+    right: 1em;
+    line-height: 1.625;
+    a {
+      margin-left: .5em;
+    }
+    .button.tiny-button {
+      margin: -.1em .1em .3em 0;
+    }
+  }
+  .network {
+    display: inline-block;
+    font-size: 1em;
+    margin-top: -.25em;
+  }
+}
+
+.page-pages-show-leaderboard, .page-pages-show-leaderboard-wide {
+  .people-list {
+    .people-name {
+      max-width: none;
+    }
+  }
+}
+
+.supporter-follow-details {
+  font-size: 0.9em;
+  overflow: hidden;
+  .network {
+    padding-right: 10px;
+  }
+  .addreaction, .addreaction-right, .plus, .plus-left {
+    font-size: 1em;
+  }
+}
+
+// alternating background color used in people list
+
+.odd {
+  background-color: #f3f3f3;
+}
+
+// tracking url on recruiting page
+
+#tracking_link {
+  width: 100%;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+// if a page has tags
+
+.page-tags {
+  margin-top: 15px;
+  .icon-tag {
+    display: inline-block;
+    padding-top: 5px;
+    font-size: 12px;
+  }
+}
+
+.page-tag-background {
+  display: inline-block;
+}
+
+.page-tag {
+  text-indent: 40px;
+  background-color: $theme-color-1;
+  font-size: 11px;
+  color: white;
+  padding: 2px 5px;
+  @include border-radius(2px);
+  white-space: nowrap;
+  a {
+    color: white;
+  }
+}
+
+// site rules
+
+.rule-list {
+  padding-left: 20px;
+  li {
+    padding-bottom: 15px;
+  }
+  .rule {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  p {
+    margin: 5px 0;
+  }
+}
+
+// paid membership options
+
+ul.membership-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li.membership {
+    position: relative;
+    text-align: center;
+    list-style: none;
+    background-color: $form-background;  
+    color: $form-color;
+    padding: 1em;
+    display: block;
+    width: 100%; // 236px ÷ 984px
+    margin-bottom: 1em;
+    .membership-blurb {
+      font-size: .75em;
+      padding: 1em 0;
+      line-height: 1.625;
+    }
+    .buy {
+      text-align: center;
+      .submit-button {
+        margin: 0;
+      }
+    }
+    .badge {
+      font-size: .75em;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// stat boxes on political capital and recruiting pages
+
+.stat-boxes {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .stat-box {
+    box-shadow: 0 0 1px rgba(black, 0.66), inset 0 0 10px rgba(white, 0.1);
+    width: 105px;
+    float: left;
+    text-align: center;
+    color: $text-color;
+    background-color: lighten($theme-color-2, 10);
+    margin-right: 0;
+    margin-bottom: 10px;
+    min-height: 50px;
+    .stat-box-inner {
+      padding: 6px;
+      min-height: 30px;
+      .stat {
+        margin-top: 0px;
+        font-size: 18px;
+        line-height: 23px;
+        font-weight: 700;
+        &.no-label {
+          padding: 8px;
+        }
+      }
+      .stat-box + .stat-box {
+        background: #000;
+        border-left: none;
+      }
+    }
+    .label {
+      font-size: 0.8em;
+      line-height: 1.1em;
+      white-space: nowrap;
+    }
+  }
+}
+
+// answers on faq pages
+
+.answer-wrap {
+  background-color: $form-background;
+  color: $form-color;
+  padding: 1em;
+  width: 100%;
+  p:first-child {
+    margin: 0;
+  }
+  .answer-a {
+    float: left;
+    margin-right: .5em;
+    font-weight: bold;
+  }
+  .official-response {
+    font-weight: bold;
+  }
+}
+
+.answer {
+  .icon-up-dir:before {
+    margin: 0;
+    font-size: 20px;
+    line-height: 7px;
+    padding: 5px 0 0 40px;
+    color: #f3f3f3;
+    display: block;
+    vertical-align: bottom;
+  }
+}
+
+// list of questions on faq pages
+
+.question-list {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1.25em;
+  &:after {
+    content: "\2026";
+    display: block;
+    text-align: center;
+    color: $theme-color-1;
+    font-size: 4em;
+    line-height: .625;
+  }
+  li {
+    list-style: disc;
+    margin: 0;
+    padding: 0 0 .625em 0;
+    list-style-position:inside;
+    &:last-child {
+      padding: 0;
+    }
+  }
+}
+
+.left-column-narrow {
+  .question-list {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.faq .excerpt {
+  margin-top: 0 !important;
+  margin-bottom: 2.25em;
+  &:after {
+    content: "\2026";
+    display: block;
+    text-align: center;
+    color: $theme-color-1;
+    font-size: 4em;
+    line-height: .625;
+  }
+}
+
+// share box which appears after a user submits an action
+
+.flash-share {
+  margin: 0 0 1.625em 0;
+  .h3 {
+    font-size: 1.625em;
+    font-family: $headline-font;
+    background-color: $theme-color-3;
+    color: white;
+    padding: 1em;
+    margin: 0;
+  }
+  .share {
+    background-color: $form-background;
+    color: $form-color;
+    padding: 1em 1em .25em 1em;
+    margin-bottom: 2.5em;
+    .float input.submit-button {
+      margin-right: 0;
+    }
+  }
+  input.text {
+    background: darken($form-background, 5);
+  }
+}
+
+// used to slide out off canvas nav
+
+.wrap {
+  position: relative;
+  @include transition(all 0.2s ease-in-out);
+  left: 0;
+  &.active {
+    left: 16em;
+  }
+}
+
+// hide one column container if these wide templates are used
+
+.page-profiles-show-wide, .page-pages-show-question-wide {
+  .onecolumn-container {
+    background-color: transparent;
+    padding: 0;
+    @include border-radius(0);
+    border: none;
+    margin: 0;
+  }
+  .right-column .is_following {
+    display: none;
+  }
+}
+
+// content only visible in mobile viewport
+
+.mobile-visible {
+  display: block;
+}
+
+// content only visible in desktop viewport
+
+.desktop-visible {
+  display: none;
+}
+
+.comment .form {
+  @include nb-clearfix;
+}
+
+// making sure google map on calendar page resizes properly
+
+#google_map, .map {
+  img {
+    max-width: none;
+  }
+  * {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+}
+
+// share box container, shown when a user clicks the share button
+
+.share-container {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-left: 2px solid $theme-color-3;
+}
+
+// invoice page table
+
+td.invoice-total {
+  font-weight: bold;
+  background-color: white !important;
+  text-align: right;
+}
+
+td.invoice-quantity {
+  padding-left: 4%;
+}
+
+h4.expander-head {
+  background-color: #f3f3f3;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.fb-like-box, .fb-like-box span, .fb-like-box.fb_iframe_widget span iframe {
+  width: 100% !important;
+}
+
+.fb_iframe_widget span {
+  vertical-align: top !important;
+}
+
+.email-form {
+  white-space: nowrap;
+}
+
+// flash messages
+
+#flash {
+  .notice {
+    padding: 8px 14px;
+    margin-bottom: 2.625em;
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    @include border-radius(2px);
+  }
+  .flash-message {
+    display: inline-block;
+  }
+  button.flash-close {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 22px;
+    padding: 0;
+    margin: 0;
+    float: right;
+    color: #000;
+    @include opacity(.2);
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    &:hover {
+      cursor: pointer;
+      @include opacity(.4);
+    }
+  }
+  .success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+  }
+  .error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+  }
+  .info {
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #3a87ad;
+  }
+}
+
+// page specific tweaks
+
+.page-profiles-show {
+  .left-column {
+    .progress {
+      margin-bottom: 0;
+    }
+  }
+  .box {
+    margin-bottom: .5em;
+  }
+}
+
+.page-profiles-show-wide {
+  .right-column {
+    .progress {
+      margin-bottom: 0;
+    }
+  }
+  .box {
+    margin-bottom: .5em;
+  }
+}
+
+.page-pages-show-signup .page-tags {
+  margin-top: 20px;
+}
+
+.page-pages-show-voter-registration .iframe-wrapper {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  position:relative;
+  left: -6%;
+  width: 112%;
+}
+
+.page-pages-show-petition, .page-pages-show-petition-wide, .page-pages-show-endorsement, .page-pages-show-endorsement-wide, .petition_signature_form {
+  input[type="file"] {
+    display: block;
+  }
+  .button {
+    vertical-align: middle;
+  }
+}
+
+a[class^="login-button"], a[class*=" login-button"] {
+  @include button;
+  font-weight: 400;
+  text-transform: none;
+  border: 0;
+  width: 100%;
+  margin: 0 .5em .625em 0;
+}
+
+.reaction-wrap {
+  a[class^="login-button"], .reaction-wrap a[class*=" login-button"] {
+    width: 49%;
+    float:left;
+    display:block;
+    margin: 0 2% .625em 0;
+    padding-left: 0;
+    padding-right: 0;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .form-wrap {
+    &:after {
+      content: "\2026";
+      display: block;
+      text-align: center;
+      color: $theme-color-1;
+      font-size: 4em;
+      line-height: .625;
+      margin-bottom: .625em;
+    }
+  }
+}
+
+a.login-button-facebook {
+  background-color: #3e629f;
+  &:hover {
+    background-color: lighten(#3e629f, 5);
+  }
+}
+
+a.login-button-twitter {
+  background-color: #009ad7;
+  &:hover {
+    background-color: lighten(#009ad7, 5);
+  }
+}
+
+.page-pages-show-donation-wide {
+  .radio-inline {
+    label.radio {
+      min-width: 109px;
+    }
+  }
+  label[for="donation_amount_other"] {
+    margin-top: 1em;
+  }
+}
+
+.page-pages-show-calendar, .page-pages-show-calendar-wide {
+  .address_change_form {
+    padding: 360px 1.625em 1.625em 1.625em;
+    background: $form-background;
+    color: $form-color;
+    margin-bottom: 1.625em;
+    position: relative;
+    input.text {
+      background: darken($form-background, 5);
+    }
+    label {
+      color: $form-color;
+    }
+    .map {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 350px !important;
+    }
+  }
+  .event-wrap {
+    li {
+      margin-bottom: 3.25em;
+    }
+    p {
+      margin-bottom: .625em;
+    }
+    h4 {
+      border-left: 5px solid $theme-color-1;
+      padding-left: .5em;
+      line-height: 1.1;
+      margin-bottom: .625em;
+      a {
+        color: $text-color;
+      }
+    }
+    .button, .submit-link {
+      margin-top: 1.625em;
+    }
+  }
+  .event-info {
+    float:left;
+  }
+  .radio-inline {
+    label.radio {
+      min-width: 110px;
+    }
+  }
+}
+
+.page-pages-show-event, .page-pages-show-event-wide {
+  .event-map {
+    margin: 1.625em 0;
+    .map {
+      height: 300px !important;
+    }
+  }
+}
+
+#event_rsvp_guests_count, input.quantity {
+  width: 20%;
+}
+
+.event-detail,
+.event_detail{
+  margin: 1em 0;
+  clear: both;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.blog, .content_tags_show {
+  hr:last-child {
+    display: none;
+  }
+}
+
+.blog_post_page_form {
+  margin-bottom: .625em;
+}
+
+.page-pages-show-basic, .page-pages-show-basic-wide {
+  .blog {
+    .truncate-300 {
+      margin-top:1em;
+    }
+  }
+}
+
+.addreaction {
+  margin-right: .5em;
+  vertical-align: 7%;
+}
+
+#addreaction {
+  padding-top: 250px;
+  margin-top: -250px;
+  display: block;
+  line-height: 0;
+  height: 0;
+}
+
+#reactions {
+  margin-top: 2.5em;
+}
+
+.suggestion-page-form-expanded {
+  display: none;
+}
+
+.distance {
+  .within {
+    display: none;
+  }
+}
+
+.released-at {
+  font-size: .75em;
+  line-height: 1.625;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.contact {
+  font-size: .75em;
+  line-height: 1.625;
+  padding-bottom: 2.16667em;
+}
+
+.content-pages-show-political-capital {
+  // remove if you wish to show icons on descriptions
+  [class^="icon-"] {
+    display: none;
+  }
+}
+
+.comment {
+  textarea {
+    height: 9em;
+  }
+}
+
+.page-user-sessions-new-wide {
+  h2 {
+    font-size: 24.5px;
+    line-height: 25px;
+    text-align: center;
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+.signin-with-facebook {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.signin-with-twitter {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+// forces groups of words to break together
+
+.inline-block {
+  display: inline-block;
+}
+
+// featured content slider
+
+.page-features {
+  max-height: 750px;
+  overflow: hidden;
+  position: relative;
+  .single-feature {
+    display: block;
+  }
+  img {
+    width: 100%;
+  }
+  .feature-slides {
+    position: relative;
+    height: auto!important;
+    max-height: 750px;
+    overflow:hidden;
+    img.slider-loading {
+      max-width: 4%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      top: 48%;
+      left: 48%;
+      position: absolute;
+      z-index: 25;
+    }
+  }
+  .slider-loading {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    top: 20%;
+    left: 44%;
+    position: absolute;
+  }
+  .slides {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    visibility: hidden;
+    a {
+      display: block;
+    }
+    img {
+      height: auto;
+    }
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+      max-height: 750px;
+    }
+  }
+  .features-headline-wrapper {
+    position: static;
+    left: 0;
+    top: 0;
+    height: 0;
+    overflow: visible;
+    z-index: 2;
+    p {
+      top: 25%;
+      font-weight: 700;
+      position: absolute;
+      padding: 0 .625em;
+    }
+  }
+  .features-headline {
+    background: invert($features-text-color); // fallback non-transparent background color for IE 
+    background: $features-background-color;
+    text-decoration: none;
+    width: auto;
+    color: $features-text-color;
+    display: inline !important;
+    @include box-shadow(.625em 0 0 0 $features-background-color, -.625em 0 0 0 $features-background-color);
+  }
+  // If you want labels to display beneath your images, remove display: none; below //
+  .flex-control-paging {
+    display: none;
+    height: 30px;
+    bottom: 10px;
+    position:absolute;
+    width: 100%;
+    text-align:center;
+    li {
+      display: inline-block;
+      background: $header-color;
+      width: 18px;
+      height: 18px;
+      overflow: visible;
+      @include border-radius(999px);
+      margin-right: 22px;
+      cursor: pointer;
+      a {
+        width: 30px;
+        height: 30px;
+        border: 3px solid transparent;
+        position: relative;
+        left: -6px;
+        top: -6px;
+        text-indent: -9999px;
+        display: block;
+        background: transparent;
+        @include border-radius(999px);
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .flex-active {
+      border-color: $header-color;
+    }
+  }
+}
+
+// previous and next arrows on featured content slider
+
+.flex-direction-nav {
+  display: none;
+}
+
+.flex-prev, .flex-next {
+  display: none; // hids next/prev arrows in mobile viewport
+  position: absolute; top: 41%;
+  z-index: 5000;
+  font-size: 16px;
+  padding: 15px 10px;
+  background: $theme-color-3;
+  border: 1px solid darken($theme-color-3, 10);
+  color: white;
+}
+
+.flex-prev {
+  left: 0;
+  @include border-radius-top-right(2px);
+  @include border-radius-bottom-right(2px);
+  border-left: 0;
+}
+
+.flex-next {
+  right: 0;
+  @include border-radius-top-left(2px);
+  @include border-radius-bottom-left(2px);
+  border-right: 0;
+}
+
+// pagination
+
+.pagination {
+  &.loading {
+    ul:after {
+      display: inline-block;
+      content: " ";
+      background-image: url('/assets/bert-loader-small.gif');
+      vertical-align: super;
+      width: 16px;
+      height: 11px;
+      margin-left: 12px;
+    }
+  }
+  ul {
+    @include box-shadow(none);
+    li {
+      display: inline-block;
+      margin-left: .5em;
+    }
+  }
+}
+
+.form-errors, .form-error {
+  background-color: $red;
+  color: $button-color;
+  font-size: .75em;
+  line-height: 1.625;
+  margin-bottom: 1.33333em;
+  padding: 1em;
+  list-style-type: none;
+  display: none;
+}
+
+.form-error {
+  display:block;
+  margin-bottom: .25em;
+}
+
+// flag content form
+.flag-content {
+  margin-top: 1em;
+}
+
+// homepage widgets
+
+ul.homepage_excerpt-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li.excerpt-block {
+    list-style: none;
+    padding: 3.25em 0 0 0;
+    .event-map {
+      margin: 0 0 1.625em 0;
+      img {
+        max-width: none;
+      }
+      * {
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+      }
+      .map {
+        height: 304px !important;
+      }
+    }
+    .event-info-block {
+      margin: 1.625em 0 0 0;
+    }
+    .event-venue {
+      margin: 0;
+    }
+    .progress {
+      margin-bottom: 0;
+    } 
+    ul.question-list {
+      margin: 15px 0 0 15px;
+      border: none;
+    }
+    .leaderboard:last-child {
+      margin-bottom: 0;
+    }
+    .rule-list li:last-child {
+      padding: 0;
+    }
+    .byline {
+      margin-top: -.75em;
+    }
+    .answer-wrap {
+      color: $form-color;
+      background-color: $form-background;
+    }
+    .answer .icon-up-dir:before  {
+      color: $form-background;
+    }
+  }
+  h3.excerpt-type {
+    display: none;
+  }
+  & > h3 {
+    display: block;
+    font-size: 1.75em;
+    border-left: 5px solid $theme-color-1;
+    padding-left: .5em;
+    line-height: 1.1;
+    margin-bottom: .93em;
+    a {
+      color: $text-color;
+    }
+  }
+  h4.excerpt-title {
+    font-size: 1.75em;
+    border-left: 5px solid $theme-color-1;
+    padding-left: .5em;
+    line-height: 1.1;
+    margin-bottom: .93em;
+    a {
+      color: $text-color;
+    }
+  }
+  .continue {
+    display: block;
+    margin: 1em 0;
+  }
+}

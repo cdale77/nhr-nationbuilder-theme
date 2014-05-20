@@ -1,0 +1,145 @@
+.progress {
+  position: relative;
+  height: 18px;
+  margin: 2em auto .625em auto;
+  background-color: $form-background;
+}
+
+.progress .bar {
+  width: 0;
+  height: 100%;
+  color: $text-color;
+  float: left;
+  font-size: .8em;
+  text-align: right;
+  background-color: $theme-color-1;
+  @include box-sizing(border-box);
+  @include transition(width 0.6s ease);
+}
+
+.progress-striped .bar {
+  background-color: #149bdf;
+  @include background-image( linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent) );
+  @include background-size(40px 40px);
+}
+
+.progress.active .bar {
+  animation: progress-bar-stripes 2s linear infinite;
+  -moz-animation: progress-bar-stripes 2s linear infinite;
+  -ms-animation: progress-bar-stripes 2s linear infinite;
+  -o-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite;
+}
+
+.progress-danger .bar,
+.progress .bar-danger {
+  background-color: #dd514c;
+  @include background-image( linear-gradient(top, #ee5f5b, #c43c35) );
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffc43c35', GradientType=0);
+}
+
+.progress-danger.progress-striped .bar,
+.progress-striped .bar-danger {
+  background-color: $red;
+  max-width: 100% !important;
+}
+
+.progress-success .bar,
+.progress .bar-success {
+  background-color: $theme-color-1;
+  max-width: 100% !important;
+}
+
+.progress-success.progress-striped .bar,
+.progress-striped .bar-success {
+  background-color: $theme-color-1;
+  max-width: 100% !important;
+}
+
+.progress-info .bar,
+.progress .bar-info {
+  background-color: $theme-color-1;
+  max-width: 100% !important;
+}
+
+.progress-info.progress-striped .bar,
+.progress-striped .bar-info {
+  background-color: $theme-color-1;
+  max-width: 100% !important;
+}
+
+.progress-warning .bar,
+.progress .bar-warning {
+  background-color: $yellow;
+  max-width: 100% !important;
+}
+
+.progress-warning.progress-striped .bar,
+.progress-striped .bar-warning {
+  background-color: $yellow;
+  max-width: 100% !important;
+}
+
+.bar-text {
+  line-height: 1.625;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: -2.25em;
+  font-weight: 700;
+  color: $theme-color-1;
+}
+
+.bar-goal {
+  font-size: .8em;
+  line-height: 1.625;
+  text-align: center;
+  font-weight: 700;
+  margin: .625em 0 1em 0;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-moz-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-ms-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}

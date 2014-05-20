@@ -1,0 +1,55 @@
+<div class="twocolumn-container clearfix">
+
+  <div class="left-column">
+
+    {{ content_for_notifications }}
+
+    <div class="content-{{ request.template  | replace: '_', '-' }}">
+      {% yield %}
+    </div>
+
+  </div>
+  <!-- .left_column -->
+
+  <div class="right-column">
+
+    {% if request.logged_in? %}
+
+    {% include "supporter_nav" %}
+
+    {% else %}
+
+    <ul class="supporter-nav block">
+      <li><a href="{{ request.facebook_connect_url }}"><i class="icon-facebook-squared"></i> Sign in with Facebook</a>
+      </li>
+      <li><a href="{{ request.twitter_connect_url }}"><i class="icon-twitter-squared"></i> Sign in with Twitter</a></li>
+      <li><a href="/login"><i class="icon-email"></i> Sign in with Email</a></li>
+    </ul>
+
+    {% if site.has_signup_page? %}
+    {% include "signup_form" with site.signup_page %}
+    {% endif %}
+    
+    {% if site.has_button1? or site.has_button2? or site.has_button3? %}
+
+    <div class="supporter-nav-buttons block">
+      {% if site.has_button1? %}
+      <a class="button supporter-nav-button" href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a>
+      {% endif %}
+
+      {% if site.has_button2? %}
+      <a class="button supporter-nav-button" href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a>
+      {% endif %}
+
+      {% if site.has_button3? %}
+      <a class="button supporter-nav-button" href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a>
+      {% endif %}
+    </div>
+
+    {% endif %}
+
+    {% endif %}
+
+  </div>
+  <!-- .right-column -->
+</div> <!-- .twocolumn_container -->

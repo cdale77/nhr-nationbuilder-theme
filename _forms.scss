@@ -1,0 +1,330 @@
+// bootsrap forms
+
+form {
+  padding: 0;
+  margin: 0; }
+
+label, input, button, select, textarea {
+  font-family: $font;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.625; }
+
+label {
+  display: block;
+  margin-bottom: .25em; }
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  margin: 0 0 1em 0;
+  max-width: 100%;
+}
+
+label select {
+  margin-bottom: 0;
+}
+
+input[type="file"] {
+  /* margin: 10px 0; */
+  padding: .625em 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: none; }
+
+textarea {
+  min-height: 4em;
+  height: 4em;
+  width: 100%; }
+
+.input_checkbox {
+  input {
+    margin-right: .5em !important;
+    float: left;
+    width: auto; } }
+
+hr {
+  margin: 1.625em 0;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #ffffff; }
+
+select, textarea, input {
+  display: inline-block;
+  padding: .625em 1em;
+  font-size: 1em;
+  line-height: 1.625;
+  color: $form-color;
+  vertical-align: middle; }
+
+textarea, input {
+  background-color: $form-background;
+  color: $form-color;
+  border: 0;
+}
+
+textarea:focus, input:focus {
+  border-color: $theme-color-1;
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,.075), 0 0 2px $theme-color-1;
+  -moz-box-shadow: inset 0 0 1px rgba(0,0,0,.075), 0 0 2px $theme-color-1;
+  box-shadow: inset 0 0 1px rgba(0,0,0,.075), 0 0 2px $theme-color-1;
+}
+
+textarea[data-error-message], input[data-error-message] {
+  border-color: $red;
+  -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,.075), 0 0 2px $red;
+  -moz-box-shadow: inset 0 0 1px rgba(0,0,0,.075), 0 0 2px $red;
+  box-shadow: inset 0 0 1px rgba(0,0,0,.075), 0 0 2px $red;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  /* IE8-9 */
+  line-height: normal;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+}
+
+input[type="radio"] {
+  -webkit-appearance: radio;
+}
+
+// prevents iOS from adding unwanted styles on submit buttons
+
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  float: left;
+  margin: .3em 0em 0 -2em;
+}
+
+.radio-inline, .checkbox-inline {
+  input[type="radio"], input[type="checkbox"] {
+    display: none;
+  }
+  input[type="radio"]:checked+label, input[type="checkbox"]:checked+label {
+    background-color: $button-active-background;
+    color: $button-active-color;
+  }
+  label.radio, label.checkbox {
+    .option_label {
+      display: block;
+    }
+    background-color: $theme-color-1;
+    color: $button-color;
+    display: inline-block;
+    min-width: 80px;
+    padding: .625em .1em;
+    font-family: $headline-font;
+    font-weight: bold;
+    font-size: 1.25em;
+    text-align: center;
+    margin: .3em .3em .3em 0;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+      background: $button-hover-background;
+      color: $button-hover-color;
+    }
+    &:active {
+      background: $button-active-background;
+      color: $button-active-color;
+    }
+  }
+  label.checkbox {
+    padding: .3em;
+    height: 2em;
+    font-size: 1em;
+    margin: .3em .3em 0 0;
+  }
+  &.checkbox-inline {
+    vertical-align: middle;
+    li {
+      width: 100%;
+      vertical-align: middle;
+      label {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.controls > .radio:first-child,
+.controls > .checkbox:first-child {
+  padding-top: 5px;
+}
+
+.inline-labels, .inline-radios {
+  input {
+    vertical-align: top;
+  }
+  label {
+    display: inline-block;
+    padding-left: 4px;
+    text-align: left;
+    &.checkbox {
+      padding-left: 0;
+    }
+  }
+}
+
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+  margin-left: .625em;
+}
+
+.checkbox, .radio {
+  margin-left: 2em;
+}
+
+.form-submit,
+.form_submit {
+  font-size: .75em;
+}
+
+.form_submitting {
+  img {
+    margin-right: 6px;
+  }
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+// expands all input fields to 100%
+
+.form {
+  .text {
+    width: 100%;
+  }
+}
+
+// inline sign in form
+
+.user-session-form-container {
+  margin: 0 0 1.625em 0;
+  h4 {
+    margin-bottom: 10px;
+  }
+  .social-login {
+    float: left;
+    width: 200px;
+  }
+  .session-form {
+    float: left;
+    width: 200px;
+  }
+  input[type="email"], input[type="password"], input.text {
+    width: 100%
+  }
+  .or-create-account {
+    font-size: .75em;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 1em 1em 0 1em;
+    vertical-align: middle;
+  }
+  .email-sign-in {
+    font-size: .75em;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 1em 1.5em 0 1.5em;
+  }
+  .post-comment {
+    margin-right: -.625em;
+  }
+  .oauth-links {
+    margin-bottom: 1em;
+    a {
+      display: inline-block;
+    }
+  }
+  .errors {
+    list-style-type: none;
+    font-size: .75em;
+    margin-left: 0;
+    margin-top: 0;
+    line-height: 1.625;
+    display: none;
+  }
+}
+
+
+// form error messages
+
+.aware-theme.v2-theme .form-errors {
+
+  display: block;
+  padding: 0;
+  > * {
+    margin: 10px;
+  }
+  ul, li {
+    padding: 5px;
+    list-style: none;
+  }
+}
+
+form input.error {
+  border-color: rgba(255, 0, 0, 0.6);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+  margin-bottom: 3px;
+}
+
+.error-message {
+  font-size: 0.8em;
+  color: red;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.warning, #errorExplanation {
+  background-color: $red;
+  color: white;
+  padding: 1em;
+  margin: 0 0 1em 0;
+  font-size: 1em;
+  line-height: 1.625;
+  h2 {
+    font-size: 1.625em;
+    line-height: 1.25;
+    border-left: 0;
+    padding-left: 10px;
+  }
+}

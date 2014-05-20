@@ -1,0 +1,95 @@
+{% if request.current_user.is_intern? %}
+<ul class="supporter-nav block">
+  {% if request.current_user.can_publish? %}
+  {% if page_type == 'Blog' %}
+  <li><a href="{{ page.admin_new_subpage_url }}"><i class="icon-feather"></i> New blog post</a></li>
+  <li><a href="{{ page.admin_edit_url }}"><i class="icon-edit"></i> Edit this page</a></li>
+  {% elsif page_type == 'Suggestion Box' %}
+  <li><a href="{{ page.admin_new_subpage_url }}"><i class="icon-feather"></i> New suggestion</a></li>
+  <li><a href="{{ page.admin_edit_url }}"><i class="icon-edit"></i> Edit this page</a></li>
+  {% elsif page_type == 'Calendar' %}
+  <li><a href="{{ page.admin_new_subpage_url }}"><i class="icon-feather"></i> New event</a></li>
+  <li><a href="{{ page.admin_edit_url }}"><i class="icon-edit"></i> Edit this page</a></li>
+  {% elsif page_type == 'Blog Post' %}
+  <li><a href="{{ page.blog_post.admin_edit_url }}"><i class="icon-edit"></i> Edit this blog post</a></li>
+  {% elsif page_type == 'Question' %}
+  <li><a href="{{ page.question.admin_edit_url }}"><i class="icon-edit"></i> Edit this question</a></li>
+  {% elsif page_type == 'FAQ' %}
+  <li><a href="{{ page.faq.admin_edit_url }}"><i class="icon-edit"></i> Edit questions</a></li>
+  {% elsif page_type == 'Suggestion' %}
+  <li><a href="{{ page.suggestion.admin_edit_url }}"><i class="icon-edit"></i> Edit this suggestion</a></li>
+  {% elsif page_type == 'Event' %}
+  <li><a href="{{ page.event.admin_edit_url }}"><i class="icon-edit"></i> Edit this event</a></li>
+  {% elsif page_type == 'Profile' %}
+  <li><a href="{{ profile.admin_edit_url }}"><i class="icon-edit"></i> Edit this person</a></li>
+  {% elsif page %}
+  <li><a href="{{ page.admin_edit_url }}"><i class="icon-edit"></i> Edit this page</a></li>
+  {% endif %}
+  {% endif %}
+  <li><a href="{{ site.admin_dashboard_url }}"><i class="icon-equalizer"></i> Control panel</a></li>
+</ul>
+{% endif %}
+
+
+<ul class="supporter-nav block">
+
+  {% for child in site.supporter_pages %}
+  <li {% if page == child %}class="on"{% endif %}><a href="{{ child.url }}">{{ child.icon | icon }} {{ child.name }}</a></li>
+  {% endfor %}
+
+  {% if page_type == 'User Page' %}
+  <li class="on"><a href="{{ site.edit_pages_url }}"><i class="icon-popup"></i> Your pages</a></li>
+  {% else %}
+  <li><a href="{{ site.edit_pages_url }}"><i class="icon-popup"></i> Your pages</a></li>
+  {% endif %}
+  {% if page_type == 'User Settings' %}
+  <li class="on"><a href="{{ request.current_signup.settings_url }}"><i class="icon-cog"></i> Settings</a></li>
+  {% else %}
+  <li><a href="{{ request.current_signup.settings_url }}"><i class="icon-cog"></i> Settings</a></li>
+  {% endif %}
+
+  {% if page and page.is_editing_available? %}
+  <li><a href="{{ page.edit_url }}"><i class="icon-edit"></i> Edit this page</a></li>
+  {% endif %}
+
+</ul>
+
+{% if site.has_button1? or site.has_button2? or site.has_button3? %}
+
+<div class="supporter-nav-buttons block">
+  {% if site.has_button1? %}
+  <a class="button supporter-nav-button" href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a>
+  {% endif %}
+
+  {% if site.has_button2? %}
+  <a class="button supporter-nav-button" href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a>
+  {% endif %}
+
+  {% if site.has_button3? %}
+  <a class="button supporter-nav-button" href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a>
+  {% endif %}
+</div>
+
+{% endif %}
+
+{% if request.current_signup.has_parent? %}
+<div class="clearfix block">
+  <div class="point-pic-left">
+    {{ request.current_signup.parent.profile_image }}
+  </div>
+  <div class="point-pic-right">
+    <div class="byline">
+      Point person: {{ request.current_signup.parent.published_name_linked }}
+    </div>
+    {% if request.current_signup.parent.has_twitter_info? %}
+    <a href="{{ request.current_signup.parent.twitter_profile_url }}"><i class="icon-twitter-squared"></i></a>
+    {% endif %}
+    {% if request.current_signup.parent.has_facebook_info? %}
+    <a href="{{ request.current_signup.parent.facebook_profile_url }}"><i class="icon-facebook-squared"></i></a>
+    {% endif %}
+    {% if request.current_signup.parent.has_email? %}
+    <a href="mailto:{{ request.current_signup.parent.email }}"><i class="icon-mail-alt"></i></a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,116 @@
+// buttons
+
+@mixin button(){
+  cursor: pointer;
+  display: inline-block;
+  background-color: $button-background;
+  padding: 1em 2em 1em $button-padding;
+  border-left: $button-border;
+  font: .85em $font;
+  color: $button-color;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 .625em 0 0;
+  @include border-radius($button-radius);
+  a {
+    color: $button-color;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  &:hover, &:hover > a {
+    background-color: $button-hover-background;
+    border-color: darken($button-hover-background,15);
+    color: $button-hover-color;
+  }
+  &:active, &:active > a {
+    background-color: $button-active-background;
+    border-color: darken($button-active-background,15);
+    color: $button-active-color;
+  }
+}
+
+.button,
+.small_button {
+  @include button;
+}
+
+.tiny-button {
+  font-size: .75em;
+  padding: .625em 1em;
+  min-height: 100%;
+}
+
+.submit-button, .submit-link, .success-button {
+  @include button;
+}
+
+p + .button, .small-button, .submit-button, .submit-link, .success-button {
+  margin-top: 0;
+}
+
+.button.button-alt {
+  background-color: $alt;
+  border-left: $button-border;
+  border-left-color: darken($alt,15);
+  vertical-align: middle;
+  &:hover, &:hover > a {
+    background-color: $button-hover-background;
+    border-color: darken($button-hover-background,15);
+    color: $button-hover-color;
+  }
+  &:active, &:active > a {
+    background-color: $button-active-background;
+    border-color: darken($button-active-background,15);
+    color: $alt;
+  }
+}
+
+input.submit-button {
+  border-width: 0 0 0 .4em;
+}
+
+// red button, commonly used to cancel actions
+
+.destroy-link {
+  background-color: $red;
+  border-color: darken($red,15);
+  &:active {
+    color: $red;
+  }
+}
+
+.neutral-link {
+  background-color: $yellow;
+  border-color: darken($yellow,15);
+  &:active {
+    color: $yellow;
+  }
+}
+
+// button to close share box
+
+.share-close {
+  float: right;
+  margin: -1em -1em .75em .75em; 
+  padding: .25em;
+  min-height: auto;
+  font-size: .75em;
+  @include border-radius(0px);
+}
+
+// read more link
+
+.read-more, .read_more {
+  display: block;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.share-container {
+  .small-button {
+    min-height: 24px;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}

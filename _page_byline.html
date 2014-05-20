@@ -1,0 +1,7 @@
+<div class="byline">
+	<div class="byline-pic">{{ page.author.profile_image }}</div>
+	<span class="byline-info">
+		by {{ page.author.published_name_linked }}<br/><span class="pc">{{ page.author.capital_amount_format }}</span><br/>on {{ page.published_at | date: '%B %d, %Y' }}
+		{% if site.has_rule_page? and request.logged_in? %}<span class="byline-separator">&middot;</span> <a href="{{ page.flag_url }}" class="flag">Flag</a>{% endif %}
+	</span>
+</div>

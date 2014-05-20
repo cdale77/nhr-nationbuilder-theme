@@ -1,0 +1,211 @@
+.page-pages-show-donation-wide {
+  .donation_form .form-wrap {
+    margin-bottom: 1.25em;
+  }
+  .form-progress-indicator {
+    position: relative;
+    background: $theme-color-1;
+    padding: 1.625em 0 1.25em 0;
+    margin-bottom: -.3em;
+  }
+  .progress-indicator-stages {
+    list-style-type: none;
+    padding: 1em;
+    margin: 0 auto;
+    width: auto;
+    text-align: center;
+    li {
+      display: inline-block;
+      position: relative;
+      margin-right: 55px;
+      white-space: nowrap;
+      width: 45px;
+      &:after {
+        content: " ";
+        width: 64px;
+        height: 0;
+        border-bottom: 9px solid $form-background;
+        position: absolute;
+        top: 45px;
+        left: 43px;
+        z-index: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+        &:after {
+          display: none;
+        }
+      }
+      .stage-label {
+        font-size: .75em;
+        font-weight: 600;
+        color: $button-color;
+        position: relative;
+        text-transform: uppercase;
+      }
+      &.stage-1 .stage-label {
+        left: -2px;
+      }
+      &.stage-2 .stage-label {
+        left: -10px;
+      }
+      &.stage-3 .stage-label {
+        left: -5px;
+      }
+      .stage-count {
+        position: relative;
+        display: block;
+        color: $button-color;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        background: $form-background;
+        z-index: 5;
+        @include border-radius(99px);
+      }
+      .stage-count-inner {
+        width: 29px;
+        height: 29px;
+        left: 8px;
+        top: 8px;
+        line-height: 29.5px;
+        font-weight: 700;
+        display: block;
+        position: relative;
+        background: darken($form-background,10);
+        position: relative;
+        @include border-radius(99px);
+      }
+      &.active .stage-count-inner {
+        background: $theme-color-1;
+      }
+      &.seen .stage-count-inner {
+        background: $theme-color-1;
+        cursor: pointer;
+      }
+      &.completed .stage-count-inner {
+        text-indent: -9999px;
+        background: $theme-color-1;
+        cursor:pointer;
+        &:before {
+          color: #fff;
+          position: absolute;
+          width: 29px;
+          line-height: 31px;
+          z-index: 20;
+          opacity: 1;
+          text-align: center;
+          top: 0;
+          left: 0;
+          font-size: 1.25em;
+          cursor: pointer;
+          text-indent: 0;
+        }
+      }
+      &.completed .stage-count {
+        cursor: pointer;
+      }
+    }
+  }
+  .progress-stages {
+    background-color: $form-background;
+    color: $form-color;
+    padding: 1.625em;
+    min-height: 564px;
+    .progress-stage {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+    textarea, input.text {
+      background-color: darken($form-background,10);
+    }
+  }
+  .progress-stage-button-prev {
+    display: block;
+    margin-top: .5em;
+    &:before {
+      content:"\00ab\0000a0";
+    }
+  }
+  .radio-inline {
+    input[type="radio"] {
+      display: none;
+    }
+    label.radio {
+      background-color: $theme-color-1;
+      color: $button-color;
+      display: inline-block;
+      min-width: 80px;
+      padding: .625em 1em;
+      font-family: $headline-font;
+      font-weight: bold;
+      font-size: 1.25em;
+      text-align: center;
+      margin: .3em .3em .3em 0;
+      cursor: pointer;
+      outline: none;
+      &:hover {
+        background: $button-hover-background;
+        color: $button-hover-color;
+      }
+      &:active {
+        background: $button-active-background;
+        color: $button-active-color;
+      }
+    }
+    input[type="radio"]:checked+label {
+      background-color: $button-active-background;
+      color: $button-active-color;
+    }
+  }
+}
+
+.lt-ie9 .progress-indicator-stages li.stage-3:after {
+  display:none;
+}
+
+#donation_billing_address_state {
+  width: 100%;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  .page-pages-show-donation-wide {
+    .staged-donation-container {
+      -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -moz-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+    }
+    .staged-donation-content {
+      margin-bottom: 1.625em;
+      -ms-flex-order:1;
+      -moz-box-ordinal-group:1;
+      -webkit-box-ordinal-group:1;
+      box-ordinal-group:1;
+      -webkit-order: 1;
+      -ms-flex-order: 1;
+      order: 1;
+    }
+    .staged-donation-form {
+      -ms-flex-order:2;
+      -moz-box-ordinal-group:2;
+      -webkit-box-ordinal-group:2;
+      box-ordinal-group:2;
+      -webkit-order: 2;
+      -ms-flex-order: 2;
+      order: 2;
+    }
+  }
+}

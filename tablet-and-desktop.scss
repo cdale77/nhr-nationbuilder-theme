@@ -1,0 +1,1374 @@
+/* ===================================================================================
+   This is the tablet and desktop stylesheet. It applies to viewports above 768px.
+   For the mobile first stylesheet which applies to all screen widths, see theme.scss.
+   =================================================================================== */
+
+//* style variables *//
+
+// headline font
+$headline-font: "Exo 2", Helvetica, sans-serif;
+
+// main font
+$font: "Open Sans", Helvetica, sans-serif;
+
+$theme-color-1: #9ac760;
+$theme-color-2: #fff;
+$theme-color-3: #1f1f1f;
+$theme-color-4: #2a292b;
+
+// form input area focus color
+$theme-color-5: rgba(226, 92, 51, 0.6);
+
+// header and footer
+$header-background-color: #2e2d2f;
+$header-background-color-2: $theme-color-1;
+$header-color: #fff;
+$background-texture: none;
+$header-texture: none;
+$logo-color: #fff;
+$off-canvas-background-color: #1f1f1f;
+$features-text-color: #2f2f2f;
+$features-background-color: #fff;
+$footer-background-color: $header-background-color;
+$footer-color: $header-color;
+$footer-link-color: $theme-color-1;
+$footer-activities-background-color: darken($header-background-color, 4);
+
+// dropdowns
+$dropdown-background-color: #202020;
+$dropdown-background-hover-color: #575757;
+$dropdown-background-active-color: #2e2d2f;
+$dropdown-color: #fff;
+$dropdown-hover-color: #fff;
+$dropdown-active-color: $theme-color-1;
+$dropdown-accent-color: $theme-color-1;
+
+// subnav
+$subnav-background: #202020;
+$subnav-hover-background: #575757;
+$subnav-active-background: #2e2d2f;
+$subnav-color: #fff;
+$subnav-hover-color: #fff;
+$subnav-active-color: $theme-color-1;
+
+// text
+$text-color: #2f2f2f;
+$link-color: #9ac760;
+$link-hover-color: #787878;
+$link-active-color: #000;
+
+// buttons
+$button-color: #fff;
+$button-background: $theme-color-1;
+$button-hover-color: #fff;
+$button-hover-background: #575757;
+$button-active-color: $theme-color-1;
+$button-active-background: #2e2e30;
+$button-border: 0.4em solid darken($button-background, 15);
+$button-padding: 1.6em;
+$button-radius: 0;
+
+// site nav controls
+$control-color: #fff;
+$control-background: $theme-color-1;
+$control-hover-color: #fff;
+$control-hover-background: #575757;
+$control-active-color: #fff;
+$control-active-background: #2e2d2f;
+$control-radius: 0;
+
+// forms
+$form-color: $text-color;
+$form-background: #f0f0f0;
+
+// shades
+$shade-1: #787878;
+$shade-2: #575757;
+$shade-3: #f4faec;
+$shade-3-text-color: #2e2d2f;
+$shade-3-link-color: #93be5b;
+
+// general success and error colors
+$red: #eb1515;
+$yellow: #ffab34;
+$green: #9ac760;
+$alt: #df9c3c;
+
+// border-radius mixin
+@import "border_radius";
+
+// fluid grid for tablet
+@import "grid-tablet";
+
+//compass css3 mixins
+@import "compass/css3";
+
+//mobile nav
+@import "mobile-nav";
+
+// buttons
+@import "buttons";
+
+// buttons
+a[class^="login-button"] {
+  width: auto;
+}
+
+.reaction-wrap a[class^="login-button"], .reaction-wrap a[class*=" login-button"] {
+  width: 100%;
+  float:left;
+  display:block;
+  margin: 0 0 .625em 0;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+// page layout if the sidebar is turned on
+
+.twocolumn-container {
+  padding-bottom: 3.25em;
+  .left-column, .right-column-wide {
+    float: left;
+    width: 74.358974359%;
+    margin-right: 2.991452991%;
+  }
+  .right-column, .left-column-narrow {
+    overflow: visible;
+    float: left;
+    padding-top: 3.25em;
+    margin-top: 0;
+    width: 22.649572649%;
+    // 310px ÷ 1026px
+    margin-bottom: 0;
+    .block{
+      &:after {
+        border-right: 9999px solid transparent;
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    &:before {
+      height: 0;
+      border-right: 9999px solid $off-canvas-background-color;
+      border-bottom: 98999px solid $off-canvas-background-color;
+      top: -99999px;
+    }
+  }
+  .right-column {
+    .email-signup {
+      input.text {
+        margin: 0;
+      }
+      .submit-button {
+        margin: 0;
+      }
+    }
+    & > * {
+      padding-left: 2em;
+    }
+    &:before {
+      left: -9999px;
+      @include box-shadow(9999px 99999px 0 $off-canvas-background-color);
+    }
+  }
+  .right-column-wide {
+    margin-right: 0;
+  }
+  .left-column-narrow {
+    margin-right: 2.991452991%;
+    &:before {
+      right: -9999px;
+      @include box-shadow(-9999px 99999px 0 $off-canvas-background-color);
+    }
+  }
+}
+
+// wraps your site name or site logo
+
+header {
+  max-width: 27.875243664717%;
+  float: left;
+  background: $header-background-color-2;
+  color: $header-color;
+  vertical-align: middle;
+  position: absolute;
+  height: 100%;
+  padding: 1em 2em 1em 0;
+  img {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+  &:before {
+    border-left: 9999px solid $header-background-color-2;
+    box-shadow: 0 0 0 $header-background-color-2;
+  }
+  &.splash {
+    width:100%;
+    max-width: none;
+    height: 150px;
+    position:relative;
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+    img {
+      right: 0;
+    }
+  }
+}
+
+.title {
+  display: table;
+  vertical-align: middle;
+  position: relative;
+  height: 100%;
+  z-index: 20;
+}
+
+// if the site has a logo, center it it above content in mobile view
+
+.site-logo {
+  header {
+    float: left;
+    text-align: left;
+    max-width: 27.875243664717%;
+    margin-left: 0;
+    &.splash {
+      max-width: none;
+    }
+  }
+}
+
+.width-container {
+  overflow: visible;
+}
+
+// site wide footer
+
+footer {
+  .footer-right {
+    margin-top: 0;
+    text-align: right;
+  }
+  .row-fluid [class*="span"] {
+    min-height: 0;
+  }
+  .footer-social-links {
+    text-align: right;
+  }
+  .footer-social-button {
+    display:inline-block;
+    margin-right: .5em;
+    margin-top: 0;
+    vertical-align: top;
+  }
+}
+
+// hides off canvas nav
+
+.wrap.active {
+  left: 0;
+}
+
+.sharetable {
+  display: block;
+  width: 487px;
+  .facebook-cell {
+    float: left;
+    text-align: left;
+    padding: 0 20px 0 0;
+    vertical-align: top;
+    width: 320px;
+  }
+  .twitter-cell {
+    float: left;
+    text-align: left;
+    padding: 0 20px 0 0;
+    vertical-align: top;
+    width: 75px;
+  }
+  .gplus-cell {
+    float: left;
+    text-align: left;
+    vertical-align: top;
+    width: 52px;
+  }
+}
+
+.mobile-visible {
+  display: none;
+}
+
+.desktop-visible {
+  display: block;
+}
+
+.flash-share {
+  .float {
+    float: right;
+  }
+}
+
+// icon which activates off canvas nav
+
+.menu-link {
+  display: none;
+}
+
+// top nav with drop downs
+
+.header-container {
+  position: fixed;
+  &.splash {
+    position: relative;
+    background-color: $header-background-color-2;
+  }
+}
+
+nav, .subnav {
+  background-color: transparent;
+  border-right: 0;
+  border-top: 0;
+  float: right;
+  height: auto;
+  max-width: 68.2261208577%;
+  margin-left: 1.949317738791%;
+  position: static;
+  width: auto;
+  .topnav {
+    margin: 0;
+    padding: 1.25em 0 1.25em 1.25em;
+    clear: both;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    margin: 0 .625em 0 0;
+    position: relative;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0 15px;
+      white-space: nowrap;
+    }
+  }
+  /* controls bg color of top when hovering on sub */
+  .sub {
+    position: absolute;
+    top: 2em;
+    right: 0;
+    z-index: 9999;
+    background-color: $dropdown-background-color;
+    color: $dropdown-color;
+    min-width: 100%;
+    display: none;
+    overflow: hidden;
+    @include border-radius($control-radius);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .sub li {
+    width: 100%;
+    border: none;
+    color: $dropdown-color;
+    display: block;
+    background-color: $dropdown-background-color;
+    border: 0;
+    margin: 0;
+    @include border-radius($control-radius);
+    &.mobile-visible {
+      display: none;
+    }
+  }
+  .sub a {
+    background: none;
+    padding: 5px 20px;
+    line-height: 1.625;
+    color: $dropdown-color;
+    &:hover {
+      background-color: $dropdown-background-hover-color !important;
+      color: $dropdown-hover-color !important;
+      text-decoration: none;
+    }
+    &:active {
+      background-color: $dropdown-background-active-color !important;
+      color: $dropdown-active-color !important;
+    }
+  } 
+}
+
+nav {
+  display:table;
+  @include transition(all 0.2s ease);
+  li {
+    background: transparent;
+    border: none; 
+    a {
+      color: $header-color;
+      border: 0;
+      padding: 0;
+    }
+  }
+  &:after {
+    display: none;
+  }
+}
+
+.nav-placeholder {
+  display: block;
+  background: $header-background-color;
+}
+
+.topnav {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  & > li {
+    padding: .25em 1em;
+    @include border-radius($control-radius);
+    i {
+      margin-right: -.4em;
+      margin-left: .2em;
+    }
+    & > a {
+      color: $header-color;
+      border-bottom: 3px solid transparent;
+    }
+    &.active a {
+      border-color: $header-color;
+    }
+    &.drop {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:hover {
+      background-color: $dropdown-background-color;
+      color: $dropdown-color;
+      a {
+        color: $dropdown-color;
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+.user-menu {
+  padding: 0;
+  margin-right: -1em;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  white-space: nowrap;
+  span {
+    display: none;
+  }
+  .user-menu-profile-link {
+    i {
+      display: inline-block;
+    }
+    padding: .5em .625em .5em 1em;
+    position: relative;
+    background-color: $dropdown-background-color;
+    @include border-radius($control-radius);
+  }
+  .user-menu-sub {
+    display: none;
+    z-index: 9999;
+    right: 0;
+    margin-top: 0;
+    width: auto;
+    position: absolute;
+    background: $dropdown-background-color;
+    text-align: center;
+    padding: 1em 1em .675em 1em;
+    font-size: .75em;
+    line-height: 1.625;
+    @include border-radius($control-radius);
+    border-top-right-radius: 0;
+    span {
+      display:block;
+    }
+    i {
+      font-size: 1.3333333333em;
+      vertical-align: middle;
+      margin-right: .1em;
+    }
+    & > a {
+      display: inline-block;
+      margin-right: .5em;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+  .user-menu-info {
+    margin-top: 0;
+    padding-left: .25em;
+    text-align: left;
+    span, a, .pc {
+      display: inline-block;
+      white-space: normal;
+    }
+    .pc {
+      margin: .625em 0;
+      padding: .25em 1em;
+      background: $dropdown-accent-color;
+      color: $dropdown-background-color;
+    }
+  }
+  .icon-user {
+    font-size: 1.25em;
+  }
+  a[class^="login-button"] {
+    margin: 0 .5em .625em 0;
+    font-size: 1em;
+    padding: .25em 1em .25em .5em;
+    line-height: 1.625;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &:hover {
+    .user-menu-sub {
+      display: block;
+    }
+  }
+  &.active {
+    .user-menu-sub {
+      width: 200px;
+    }
+    a.user-menu-profile-link {
+      color: $dropdown-accent-color;
+    }
+  }
+}
+
+// navigation shown if a page has more than one subpage
+
+.subnav {
+  float: left;
+  margin-bottom: 2.5em;
+  margin-top: -1.5em;
+  margin-left: 0;
+  li a {
+    padding: 0;
+  }
+  & > li {
+    @include button;
+    padding-left: $button-padding;
+    padding-right: 2em;
+    margin-bottom: 1em;
+    margin-right: .625em;
+    color: $button-color;
+    background-color: $button-background;
+    @include border-radius($control-radius);
+    a {
+      color: $subnav-color;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    &.drop:hover {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:hover, &:hover > a {
+      background-color: $subnav-hover-background;
+      border-color: darken($subnav-hover-background,15);
+      color: $subnav-hover-color;
+    }
+    &:active, &:active > a {
+      background-color: $subnav-active-background;
+      border-color: darken($subnav-active-background,15);
+      color: $subnav-active-color;
+    }
+  }
+  .sub {
+    top: 3.35em;
+    z-index: 50;
+    background-color: $subnav-background;
+  }
+  .sub li {
+    color: $subnav-color;
+    background-color: $subnav-background;
+  }
+  .sub a {
+    color: $subnav-color;
+    &:hover {
+      background-color: $subnav-hover-background !important;
+      color: $subnav-hover-color !important;
+    }
+    &:active {
+      background-color: $subnav-active-background !important;
+      color: $subnav-active-color !important;
+    }
+  }
+}
+
+.desktop-nav {
+  li:hover .sub {
+    display: block;
+  }
+}
+
+// supporter nav which is shown if a user is signed in
+
+.supporter-nav {
+  margin: -.625em 0 0 0;
+  li {
+    &.on, &:hover {
+      margin-left: -2.35em;
+      padding-left: 2.35em;
+      background: $theme-color-1;
+      &:before {
+        border-right: none;
+      }
+    }
+    a {
+      display: block;
+      color: $dropdown-color;
+    }
+  }
+}
+
+// follow page link shown in page stream
+
+.page-follow {
+  float: right;
+  margin-top: -2.25em;
+}
+
+.submit-button, .submit-link, .success-button, .button {
+  width: auto;
+  margin-top: 1em;
+}
+
+.checkbox, .radio {
+  margin-left: 1em;
+}
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  margin: .3em .45em 0 -1em;
+}
+
+// inline radio buttons and check boxes
+
+.radio-inline, .checkbox-inline {
+  span {
+    white-space: nowrap;
+    display: inline-block;
+  }
+  input[type="radio"], input[type="checkbox"] {
+    margin: 0;
+    display: inline-block;
+  }
+  input[type="radio"]:checked+label, input[type="checkbox"]:checked+label {
+    background-color: transparent;
+    color: $text-color;
+  }
+  label {
+    display: block;
+  }
+  label.radio, label.checkbox {
+    .option_label {
+      display: inline;
+    }
+    position: relative;
+    top: .2em;
+    display: inline-block;
+    width: auto;
+    background-color: transparent;
+    font-family: $font;
+    color: $text-color;
+    font-size: 1em;
+    font-weight: normal;
+    text-align: left;
+    padding: 0;
+    margin: 0 .75em .75em .3em;
+    min-width:0;
+    background: transparent;
+    color: $text-color;
+    &:hover {
+      background: transparent;
+      color: $text-color;
+    }
+    &:active {
+      background: transparent;
+    }
+  }
+  label.checkbox {
+    position: relative;
+    padding: 0;
+    height: auto;
+    font-size: inherit;
+    margin: 0;
+  }
+ &.checkbox-inline {
+    vertical-align: top;
+    li {
+      width: auto;
+      label {
+        width: auto;
+      }
+      input[type="checkbox"] {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+// inline radio buttons
+
+.radio.inline, .checkbox.inline, .inline label.radio {
+  display: inline-block;
+  margin-right: 1.625em;
+  padding-top: .3em;
+  margin-bottom: .75em;
+  vertical-align: middle;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  border: 0;
+  padding: 0;
+  background: none;
+  @include box-shadow(0);
+}
+
+// wraps credit card icons
+
+.cc {
+  padding-bottom: .75em;
+}
+
+// paid membership options
+
+ul.membership-list {
+  vertical-align: top;
+  li.membership {
+    vertical-align: top;
+    display: inline-block;
+    margin: 0 1.153% 1.153% 0;
+    width: 31.8%;
+    padding: .959349593%;
+    height: 285px;
+    .buy {
+      position: absolute;
+      bottom: 1.25em;
+      width: 92%;
+    }
+  }
+}
+
+// featured content slider
+
+.page-features {
+  position: relative;
+  .features-headline-wrapper p {
+    font-size: 2.25em;
+    line-height: 1.5em;
+    padding: 0 .625em;
+    max-width: 100%;
+  }
+  .flex-control-paging {
+    display: block;
+  }
+}
+
+.flex-prev, .flex-next {
+  display: block;
+  height: 58px;
+  font-size: 25px;
+}
+
+// inline sign in form
+
+.user-session-form-container {
+  .oauth-links {
+   margin-bottom: 0;
+  }
+  .sign-in-with-email, .sign-up {
+    border-left: 1px solid #ccc;
+    padding-left: 2.7624309392265194%;
+  }
+}
+
+.review-rules {
+  float: right;
+  font-size: 12px;
+  padding: 0;
+}
+
+// page specific styles
+
+.page-pages-show-voter-registration .iframe-wrapper {
+  left: 0;
+  width: 100%;
+}
+
+.page-pages-show-calendar, .page-pages-show-calendar-wide {
+  .radio-inline {
+    label.radio {
+      min-width: 0;
+    }
+  }
+}
+
+#event_rsvp_guests_count, input.quantity, #signup_donations_to_raise_amount {
+  width: 25%;
+}
+
+.suggestion-tag-list {
+  li {
+    margin: 15px 15px 10px 0;
+  }
+}
+
+.page-pages-show-donation-wide {
+  .radio-inline {
+    label.radio {
+      min-width: 118px;
+    }
+  }
+}
+
+input#donation_amount_other {
+  width: 30%;
+}
+
+.distance {
+  .within {
+    position: relative;
+    top: 2px;
+    display: inline;
+    padding-right: 5px;
+  }
+}
+
+.page-user-sessions-new-wide {
+  h2 {
+    font-size: 31.5px;
+    line-height: 35px;
+  }
+}
+
+.activities {
+  li {
+    .activity {
+      padding-left: 135px;
+    }
+    .activity-signup, .stream-pic {
+      z-index: 5;
+    }
+    .activity-signup {
+      position: absolute;
+      left: 0;
+      text-align: center;
+      width: 110px;
+      top: 48px;
+      margin-top: 8px;
+    }
+    .stream-pic {
+      position:relative;
+      display:block;
+      width: 48px;
+      height: auto;
+      margin: 0 31px;
+      float: left;
+      overflow: hidden;
+      @include border-radius(999px);
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &.activity {
+      min-height: 128px;
+    }
+  }
+}
+
+.page-pages-show-donation-wide {
+  .activities {
+    li {
+      .activity-signup {
+        position: relative;
+        width: auto;
+        top: .4em;
+        text-align: left;
+      }
+      .activity {
+        padding-left: 68px;
+      }
+      .stream-pic {
+        margin: 0;
+      }
+      &.activity {
+        min-height: 0;
+      }
+    }
+  }
+  ul#page-stream {
+    .activity-time {
+      display: inline-block;
+      margin-left: .05em;
+    }
+  }
+}
+
+.page-pages-show-blog-post .content-pages-show-blog-post, .page-pages-show-blog-post-wide .content-pages-show-blog-post-wide, .page-pages-show-blog .content-pages-show-blog, .page-pages-show-blog-wide .content-pages-show-blog-wide {
+  .byline {
+    position: absolute;
+    left: 0;
+    margin-top: 1.93em;
+    text-align: center;
+    width: 110px;
+    z-index: 5;
+  }
+  .byline-pic {
+    position:relative;
+    display:block;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto .5em auto;
+    overflow: hidden;
+    @include border-radius(999px);
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .byline-info {
+    display: block;
+    text-align: center;
+  }
+  .byline-separator {
+    display: none;
+  }
+  .content {
+    padding-left: 135px;
+    min-height: 160px;
+  }
+  .pc {
+    font-size: 1em;
+    background: $dropdown-accent-color;
+    color: $dropdown-background-color;
+  }
+  .flag {
+    display: block;
+  }
+}
+
+.page-pages-show-blog .content-pages-show-blog, .page-pages-show-blog-wide .content-pages-show-blog-wide, .page-pages-show-basic .blog, .page-pages-show-basic-wide .blog, .page-pages-show-faq-wide .faq {
+  h3 {
+    border-left: 5px solid $theme-color-1;
+    padding-left: .5em;
+    line-height: 1.1;
+    a {
+      color: $form-color;
+    }
+  }
+  .byline {
+    margin-left: -150px;
+    width: 150px;
+    background: $shade-3;
+    color: $shade-3-text-color;
+    padding: 1.625em 1em 1.25em 1em;
+    top:0;
+    a {
+      color: $shade-3-link-color;
+    }
+  }
+  .page-excerpt {
+    border-left: 150px solid $theme-color-2;
+    background: $form-background;
+    color: $form-color;
+    padding: 1.5em 1.625em 1.625em 1.625em;
+    min-height: 180px;
+    position:relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 3.25em;
+    width: 100%;
+    & + hr {
+      display: none;
+    }
+  }
+  .mobile-visible {
+    display: none;
+  }
+}
+
+.page-pages-show-faq-wide .faq {
+  h3 {
+    margin-bottom: 1em;
+  }
+  .page-excerpt {
+    border-left: 0;
+    margin-bottom: 2.25em;
+  }
+  .excerpt{
+    margin-bottom: 0;
+    &:after {
+      display:none;
+    }
+  }
+  .answer-wrap {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// caps width on text-heavy pages for better readability
+.page-pages-show-blog-post-wide, .page-pages-show-moneybomb-wide, .page-pages-show-petition-wide, .page-pages-show-press-release-wide, .page-pages-show-moneybomb-wide, .page-pages-show-feedback-wide, .page-pages-show-endorsement-wide, .page-pages-show-rules-wide, .page-pages-show-event-wide {
+  .main.width-container {
+    max-width: 850px;
+  }
+}
+
+.page-pages-show-basic, .page-pages-show-basic-wide {
+  .blog {
+    .truncate-300 {
+      margin-top:0;
+    }
+    .page-excerpt {
+      border-left:0;
+      padding-left: 3.25em;
+      padding-right: 3.25em;
+      h3 {
+        font-size: 1em;
+        border-left: 0;
+        padding-left: 0;
+        line-height: 1.625;
+        margin-bottom: .25em;
+      }
+      .button {
+        position: absolute;
+        right: 10%;
+        margin-top: 0.15em;
+      }
+    }
+  }
+}
+
+.people-list .people-name {
+  max-width: none;
+}
+
+.page-pages-show-calendar, .page-pages-show-calendar-wide {
+  .event-wrap {
+    .button, .submit-link {
+      float:right;
+    }
+  }
+}
+
+// inline formatting for name, activity type and date in page stream for tablet and desktop view
+
+ul#page-stream {
+  li.activity  {
+    span + a {
+    display: block;
+    } 
+  }
+  .activity-time {
+    display: block;
+  }
+  .activity_content {
+    clear: none;
+  }
+}
+
+ul.homepage_excerpt-list {
+  li.excerpt-block {
+    .event-map {
+      margin-left: -7.555%;
+      width: 70%;
+      float: left;
+    }
+    .event-info-block {
+      width: 37.55555%;
+      float: left;
+      padding: .1em 0 0 3.25em;
+      margin: 0 0 1.625em 0;
+      position: relative;
+      &:before {
+        font-family: 'responsive';
+        content: "\e604";
+        font-size: 1.85em;
+        position: absolute;
+        top: 0;
+        left: .6em;
+        color: $theme-color-1;
+      }
+    }
+  }
+}
+
+// Tablet only
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+// off canvas nav to be used on tablets, since drop downs don't work on touch devices
+
+  a[class^="login-button"] {
+    width: 100%;
+  }
+
+  .header-container {
+    position: relative;
+  }
+
+  .nav-placeholder {
+    display: none;
+  }
+
+  nav {
+    @include mobile-nav;
+    float: none;
+    margin: 0;
+    max-width: none;
+    display: block;
+    min-height: 0;
+    .topnav {
+      padding: 0;
+    }
+    li {
+      margin: 0;
+      display:block;
+    }
+    .sub {
+      position: static;
+      width: 100%;
+      padding: 0;
+      li {
+        @include border-radius(0);
+        &:last-child {
+          margin-bottom: 0;
+        }
+        a {
+          padding: 0.675em 1em;
+        }
+        &.mobile-visible {
+          display: block;
+        }
+      }
+    }
+    &:after {
+      display: block;
+    }
+  }
+
+  .topnav {
+    display: block;
+    text-align: left;
+    & > li {
+      padding: 0;
+      @include border-radius(0);
+      & > a {
+        border: none;
+      }
+    }
+  }
+
+  .user-menu {
+    position: relative;
+    color: $header-color;
+    padding: 1em;
+    text-align: left;
+    white-space: normal;
+    .sub {
+      display: block;
+      top: auto;
+    }
+    .profile_image {
+      @include border-radius(999px);
+    }
+    & > a {
+      color: $dropdown-color;
+      text-decoration: underline;
+    }
+    .pc {
+      font-size: 1em;
+    }
+    span {
+      display: block;
+    }
+    .user-menu-sub {
+      display: block;
+      z-index: auto;
+      position: relative;
+      background: transparent;
+      text-align: left;
+      margin-top: 1em;
+      padding: 0;
+      font-size: inherit;
+      line-height: 1.625;
+      span a {
+        color: $dropdown-color;
+        text-decoration: underline;
+      }
+      &.active {
+        .user-menu-profile-link {
+          color: $dropdown-color;
+        }
+        a {
+          color: $dropdown-color;
+          text-decoration: underline;
+          &.name {
+            color: $dropdown-color;
+          }
+        }
+      }
+    }
+    .user-menu-profile-link {
+      padding: 0;
+      background-color: transparent;
+      i {
+        display: none;
+      }
+    }
+    .user-menu-info {
+      margin-top: 1em;
+      a {
+        color: $dropdown-color;
+        text-decoration: underline;
+        &.name {
+          color: $dropdown-color;
+        }
+      }
+    }
+  }
+
+  header {
+    background: $theme-color-1;
+    color: $logo-color;
+    float: left;
+    padding: 1em 2em;
+    width: 70%;
+    position:relative;
+    img {
+      position: relative;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -9999px;
+      right: 0;
+      border-left: 0 solid $theme-color-1;
+      @include box-shadow(9999px 0 0 $theme-color-1)
+    }
+  }
+
+  .twocolumn-container {
+    .right-column {
+      .email-signup {
+        input.text {
+          display: block;
+          width: 100%;
+          margin-bottom: 1em;
+          border-top-right-radius: $button-radius;
+          border-bottom-right-radius: $button-radius;
+        }
+        .submit-button {
+          width: 100%;
+          display: block;
+          border-top-left-radius: $button-radius;
+          border-bottom-left-radius: $button-radius;
+        }
+      }
+    }
+  }
+
+  .menu-link {
+    display: block;
+  }
+
+  .wrap.active {
+    left: 16em;
+  }
+
+// javascript is used to wrap all iframes in a span called responsive-embed-wrapper to make them responsive.
+// once the iframe is wrapped in said span, it will be shown.
+
+  iframe[src *= 'youtube'] {
+    display: none;
+  }
+
+  .responsive-embed-wrapper iframe {
+    display: block;
+  }
+
+  .fb-like-box iframe {
+    display: block;
+  }
+
+// replaces the subnav with breadcrumbs, as dropdowns don't work in touch devices
+
+  .tablet-visible {
+    display: block;
+  }
+
+  .desktop-visible {
+    .subnav-container {
+      display: none;
+    }
+  }
+}
+
+// Desktop above 1200px styles
+
+@media only screen and (min-width: 1200px) {
+
+  // maximum side width container
+
+  .width-container {
+    width: 1200px;
+    padding: 0 1.5%;
+    margin: 0 auto;
+  }
+
+  .page-features {
+    position: relative;
+    .features-headline-wrapper p {
+      font-size: 3em;
+      line-height: 1.5em;
+      max-width: 50%;
+      padding: 0 .625em;
+    }
+  }
+
+  // paid membership options
+
+  ul.membership-list {
+    li.membership {
+      width: 23.972%;
+      margin-right: .758%;
+    }
+  }
+
+  ul.homepage_excerpt-list {
+    li.excerpt-block {
+      .event-map {
+        margin-left: -2.546%;
+      }
+      .event-info-block {
+        width: 32.546%;
+      }
+    }
+  }
+
+}
