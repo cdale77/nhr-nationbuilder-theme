@@ -116,7 +116,8 @@
             <div class="row-fluid footer-activities">
 
               <div class="span8 footer-left desktop-visible">
-
+                {% comment %}
+          
                 {% unless site.recent_supporters_with_pictures == empty %}
                 
                 <h5>Powered by people like you</h5>
@@ -134,9 +135,9 @@
                 </div>
 
                 {% endunless %}
+                {% endcomment %}
 
               </div>
-
               <div class="span4 footer-right footer-social-links">
                 {% if site.has_facebook_page? %}<a href="{{ site.broadcaster.facebook_page_profile_url }}"><i class="icon-facebook-squared"></i></a>{% endif %}
                 {% if site.has_twitter? %}<a href="{{ site.broadcaster.twitter_profile_url }}"><i class="icon-twitter-squared"></i></a>{% endif %}
@@ -146,7 +147,6 @@
                   <a href="{{ page.parent.rss_url }}"><i class="icon-rss"></i></a>
                 {% endif %}
               </div>
-
             </div>
 
             <div class="footer-content">
@@ -173,7 +173,7 @@
                          Created with <a href="http://nationbuilder.com/">NationBuilder</a>
                   {% endif %}
                 </div>
-
+                {% comment %}
                 <div class="span4 footer-right">
 
                   {% if site.has_twitter? %}
@@ -191,7 +191,7 @@
                 </div>
 
               </div>
-
+              {% endcomment %}
             </div>
 
           </footer>

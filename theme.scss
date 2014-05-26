@@ -20,9 +20,14 @@ $theme-color-4: #2a292b;
 $theme-color-5: rgba(226, 92, 51, 0.6);
 
 // header and footer
-$header-background-color: #2e2d2f;
-$header-background-color-2: $theme-color-1;
-$header-color: #fff;
+//$header-background-color: #2e2d2f;
+
+/* Change the header background color to white*/
+//$header-background-color-2: $theme-color-1;
+$header-background-color: white;
+$header-background-color-2: white;
+$header-color: white;
+
 $background-texture: none;
 $header-texture: none;
 $logo-color: #fff;
@@ -35,13 +40,22 @@ $footer-link-color: $theme-color-1;
 $footer-activities-background-color: darken($header-background-color, 4);
 
 // dropdowns
-$dropdown-background-color: #202020;
-$dropdown-background-hover-color: #575757;
-$dropdown-background-active-color: #2e2d2f;
-$dropdown-color: #fff;
-$dropdown-hover-color: #fff;
-$dropdown-active-color: $theme-color-1;
-$dropdown-accent-color: $theme-color-1;
+//$dropdown-background-color: #202020;
+//$dropdown-background-hover-color: #575757;
+//$dropdown-background-active-color: #2e2d2f;
+//$dropdown-color: #fff;
+//$dropdown-hover-color: #fff;
+//$dropdown-active-color: $theme-color-1;
+//$dropdown-accent-color: $theme-color-1;
+
+// dropdowns
+$dropdown-background-color: #FAFAFA;
+$dropdown-background-hover-color: #485884;
+$dropdown-background-active-color: white;
+$dropdown-color: white;
+$dropdown-hover-color: white;
+$dropdown-active-color: white;
+$dropdown-accent-color: white;
 
 // subnav
 $subnav-background: #202020;
@@ -941,6 +955,7 @@ ul#page-stream {
   background-repeat: repeat;
   z-index: 9999;
   width: 100%;
+  
 }
 
 // site wide footer
@@ -2265,4 +2280,27 @@ ul.homepage_excerpt-list {
     display: block;
     margin: 1em 0;
   }
+}
+
+
+/******************* CUSTOM ********************/
+/* Styles here overide the defaults specified above. To revert 
+to the theme default, simply comment out these rules */
+
+nav li a {
+  color: #334576 !important;
+  font-weight:bold;
+}
+
+nav li a {
+  color: #334576 !important;
+  font-weight:bold;
+}
+
+i.icon-user, i.icon-angle-down {
+  color: #485884 !important;
+}
+
+.header-container {
+box-shadow: 1px 2px 4px rgba(3, 3, 3, 0.2);
 }

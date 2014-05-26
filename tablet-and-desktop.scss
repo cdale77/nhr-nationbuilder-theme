@@ -20,9 +20,16 @@ $theme-color-4: #2a292b;
 $theme-color-5: rgba(226, 92, 51, 0.6);
 
 // header and footer
-$header-background-color: #2e2d2f;
-$header-background-color-2: $theme-color-1;
-$header-color: #fff;
+// $header-background-color: #2e2d2f;
+
+
+/* Change the background behind the logo to white */
+// $header-background-color-2: $theme-color-1;
+$header-background-color: white;
+$header-background-color-2: white;
+$header-color: white;
+
+
 $background-texture: none;
 $header-texture: none;
 $logo-color: #fff;
@@ -35,13 +42,22 @@ $footer-link-color: $theme-color-1;
 $footer-activities-background-color: darken($header-background-color, 4);
 
 // dropdowns
-$dropdown-background-color: #202020;
-$dropdown-background-hover-color: #575757;
-$dropdown-background-active-color: #2e2d2f;
-$dropdown-color: #fff;
-$dropdown-hover-color: #fff;
-$dropdown-active-color: $theme-color-1;
-$dropdown-accent-color: $theme-color-1;
+//$dropdown-background-color: #202020;
+//$dropdown-background-hover-color: #575757;
+//$dropdown-background-active-color: #2e2d2f;
+//$dropdown-color: #fff;
+//$dropdown-hover-color: #fff;
+//$dropdown-active-color: $theme-color-1;
+//$dropdown-accent-color: $theme-color-1;
+
+// dropdowns
+$dropdown-background-color: #FAFAFA;
+$dropdown-background-hover-color: #485884;
+$dropdown-background-active-color: white;
+$dropdown-color: white;
+$dropdown-hover-color: white;
+$dropdown-active-color: white;
+$dropdown-accent-color: white;
 
 // subnav
 $subnav-background: #202020;
@@ -1372,3 +1388,25 @@ ul.homepage_excerpt-list {
   }
 
 }
+
+
+/************* CUSTOM *************/
+/* These rules override the styles specified above
+to revert to the default styles, comment out the rules
+below */
+
+.site-logo header { max-width: 33%; }
+
+nav li a {
+  color: #334576 !important;
+  font-weight:bold;
+}
+
+i.icon-user, i.icon-angle-down {
+  color: #485884 !important;
+}
+
+@media only screen and (min-width: 500px) {#topnav{min-width:600px;}}
+@media only screen and (min-width: 770px) {div.features-container{padding-top:78px;}}
+
+

@@ -4,63 +4,7 @@ $(document).ready(function(){
 
   (function(){
 
-    // Updates navigation area styling
-    this.initNavigation = function(nav, placeholder, menu, minheight) {
-      var scrollTimer;
-      var resizeTimer;
-      if (menu.length && ($(window).width() > 320)) {
-        CollectiveTheme.updateNavigation(nav, placeholder, menu, minheight);
-        if(nav.height() >= 150){
-          placeholder.height(Math.ceil(nav.height())-1);  
-        } else {
-          placeholder.height(149);
-        }
-        $(window).resize(function(){
-          if (resizeTimer) {
-            clearTimeout(resizeTimer);
-          }
-          resizeTimer = setTimeout(CollectiveTheme.updateNavigation(nav, placeholder, menu, minheight),50);
-        });
-        $(window).scroll(function(){
-          if (scrollTimer) {
-            clearTimeout(scrollTimer);
-          }
-          scrollTimer = setTimeout(CollectiveTheme.updateNavigation(nav, placeholder, menu, minheight),50);
-        });
-        $(window).load(function(){
-          CollectiveTheme.updateNavigation(nav, placeholder, menu, minheight);
-        });
-        if ($(window).width() <= 768) {
-          CollectiveTheme.updateHamburger(nav, placeholder, menu, minheight);
-        }
-      }
-      else if (menu.length) {
-        CollectiveTheme.updateHamburger(nav, placeholder, menu, minheight);
-      }
-    }
-
-    this.updateNavigation = function(nav, placeholder, menu, minheight) {
-      var placeholderTimer;
-      var fromTop = $(window).scrollTop();
-      if((fromTop >= 0) && ($(window).width() > 768)) {
-        menu.css('height', minheight - $(window).scrollTop());
-      }
-    }
-
-    this.updateHamburger = function(nav, placeholder, menu, minheight) {
-      $('i.icon-menu').css('line-height',Math.ceil(nav.height())-1+'px');
-      $(window).resize(function(){
-        $('i.icon-menu').css('line-height',Math.ceil(nav.height())-1+'px');
-      });
-    }
-
-    this.updateActivities = function(activities) {
-      activities.each(function(){
-        var iconHeight = $(this).find('.stream-pic').height();
-        var signupBlock = $(this).find('.activity-signup');
-        signupBlock.css('top',iconHeight + 'px');
-      });
-    }
+    
 
     // Footer sizing
     this.updateFooter = function() {
