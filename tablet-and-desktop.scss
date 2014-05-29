@@ -4,6 +4,10 @@
    =================================================================================== */
 
 //* style variables *//
+$nhr-grey: #2e2d2f;
+$nhr-blue: #334576;
+$nhr-hover-blue: #485884;
+$nhr-off-white: #FAFAFA;
 
 // headline font
 $headline-font: "Exo 2", Helvetica, sans-serif;
@@ -20,7 +24,7 @@ $theme-color-4: #2a292b;
 $theme-color-5: rgba(226, 92, 51, 0.6);
 
 // header and footer
-// $header-background-color: #2e2d2f;
+// $header-background-color: $nhr-grey;
 
 
 /* Change the background behind the logo to white */
@@ -52,7 +56,7 @@ $footer-activities-background-color: darken($header-background-color, 4);
 
 // dropdowns
 $dropdown-background-color: #FAFAFA;
-$dropdown-background-hover-color: #485884;
+$dropdown-background-hover-color: $nhr-hover-blue;
 $dropdown-background-active-color: white;
 $dropdown-color: white;
 $dropdown-hover-color: white;
@@ -69,9 +73,12 @@ $subnav-active-color: $theme-color-1;
 
 // text
 $text-color: #2f2f2f;
-$link-color: #9ac760;
-$link-hover-color: #787878;
-$link-active-color: #000;
+//$link-color: #9ac760;
+//$link-hover-color: #787878;
+//$link-active-color: #000;
+
+$link-color: $nhr-blue;
+$link-hover-color: $nhr-hover-blue;
 
 // buttons
 $button-color: #fff;
@@ -1398,13 +1405,15 @@ below */
 .site-logo header { max-width: 33%; }
 
 nav li a {
-  color: #334576 !important;
+  color: $nhr-blue !important;
   font-weight:bold;
 }
 
 i.icon-user, i.icon-angle-down {
-  color: #485884 !important;
+  color: $nhr-hover-blue !important;
 }
+
+.user-menu-info a,span { color: $nhr-blue !important; }
 
 @media only screen and (min-width: 500px) {#topnav{min-width:600px;}}
 @media only screen and (min-width: 770px) {div.features-container{padding-top:78px;}}
