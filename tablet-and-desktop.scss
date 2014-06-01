@@ -1402,6 +1402,8 @@ ul.homepage_excerpt-list {
 to revert to the default styles, comment out the rules
 below */
 
+/* nav */
+
 .site-logo header { max-width: 33%; }
 
 nav li a {
@@ -1415,6 +1417,58 @@ i.icon-user, i.icon-angle-down {
 
 .user-menu-info a,span { color: $nhr-blue !important; }
 
+.header-container {
+box-shadow: 1px 2px 4px rgba(3, 3, 3, 0.2);
+}
+
+/* fix the overall positioning. Applied to all pages but a page with slug == 'home' */
+div.fix-positioning { margin-top: 77px; }
+
+
+/* sidebar styles */
+span#right-sidebar-header {
+  font-size: 1.45em;
+  color: #ffffff !important;
+  display: block;
+}
+
+span.right-sidebar-subheader {
+  font-size: 1.1em;
+  color: #ffffff !important;
+  display: block;
+}
+
+span.right-sidebar-link {
+  font-size: 110%;
+  color: #ffffff !important;
+  display: block;
+}
+
+div.right-sidebar-calendar-events {
+  h4 { 
+    font-weight: normal !important;
+    font-size: 100% !important;
+  }
+  a {  color: #ffffff !important; }
+  a:hover { text-decoration: underline; }
+  div.event-count,a.submit-link {
+      background: none !important;
+      color: #ffffff !important;
+    }
+    a.submit-link {
+      display: inline !important;
+      border-left: none !important;
+ 			padding: 3px 5px 3px 5px;
+    }
+}
+
+/*
+div.right-column { overflow: hidden !important; }
+
+div.features-container { 
+  width: 76.5% !important; 
+}
+*/
 @media only screen and (min-width: 500px) {#topnav{min-width:600px;}}
 @media only screen and (min-width: 770px) {div.features-container{padding-top:78px;}}
 

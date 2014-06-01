@@ -51,7 +51,8 @@
   <script type="text/javascript" src="jquery.ui.effect-slide.min.js"></script>
   <script type="text/javascript" src="staged-donations.js"></script>
   <script type="text/javascript" src="collective.js"></script>
-
+  
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
 </head>
 <body class="aware-theme v2-theme {{ page.page_class_name }} js">
   <div id="pattern" class="pattern">
@@ -78,24 +79,31 @@
         </div>
         <!-- .header-container -->
 
-        <div class="nav-placeholder"></div>
+        <div class="nav-placeholder clearfix"></div>
+        		{% if site.has_header_image? %}
+          		{% unless page.features_count > 0 %}
+          			
+									<div class="features-container">
+           				<img src="{{ site.header_image_url_1026 }}" class="header-image" border="0" />
+          			</div>
+									
+          		{% endunless %}
+        		{% endif %}
 
-        {% if site.has_header_image? %}
-          {% unless page.features_count > 0 %}
-          <div class="features-container">
-           <img src="{{ site.header_image_url_1026 }}" class="header-image" border="0" />
-          </div>
-          {% endunless %}
+        		{% if page.features_count > 0 %}
+        			<div class="features-container">
+        				{% include "features" %}
+        			</div>
+        		{% endif %}
+        {% if page.slug == "home" %}
+        	<div class="main-container" id="middle">
+        {% else %}
+        	<div class="main-container fix-positioning" id="middle">
         {% endif %}
-
-        {% if page.features_count > 0 %}
-        <div class="features-container">
-        {% include "features" %}
-        </div>
-        {% endif %}
-
-        <div class="main-container" id="middle">
+        
           <div class="main width-container clearfix">
+
+
 
             {% if request.is_sidebar? %}
             {% include "columns_2" %}

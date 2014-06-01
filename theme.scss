@@ -560,6 +560,8 @@ nav {
   }
   .pc {
     font-size: 1em;
+    background: none; /* BMJ */
+    color: white;  /* BMJ */
   }
   .user-menu-sub {
     margin-top: 1em;
@@ -2294,18 +2296,76 @@ ul.homepage_excerpt-list {
 /* Styles here overide the defaults specified above. To revert 
 to the theme default, simply comment out these rules */
 
-nav li a {
-  color: $nhr-blue !important;
-  font-weight:bold;
+/* nav */
+.menu-link {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+header {
+  padding: .8em;
+}
+
+/* sidebar styles */
+span#right-sidebar-header {
+  font-size: 1.3em;
+  color: #ffffff !important;
+  display: block;
+}
+
+span.right-sidebar-subheader {
+  font-size: 1.1em;
+  color: #ffffff !important;
+  display: block;
+}
+
+h2.headline {font-family: 'Roboto Slab', serif;
+font-style: normal;
+font-weight: 400;
+font-size: 300%;
+
+border:none;
+padding:0;
+}
+
+.menu-link {
+  background-color: $nhr-grey;
 }
 
 
-i.icon-user, i.icon-angle-down {
-  color: $nhr-hover-blue !important;
+/* sidebar styles */
+span#right-sidebar-header {
+  font-size: 1.45em;
+  color: #ffffff !important;
+  display: block;
 }
 
-.header-container {
-box-shadow: 1px 2px 4px rgba(3, 3, 3, 0.2);
+span.right-sidebar-subheader {
+  font-size: 1.1em;
+  color: #ffffff !important;
+  display: block;
 }
 
-.user-menu-info a,span{ color: $nhr-blue !important; }
+span.right-sidebar-link {
+  font-size: 110%;
+  color: #ffffff !important;
+  display: block;
+}
+
+div.right-sidebar-calendar-events {
+  h4 { 
+    font-weight: normal !important;
+    font-size: 100% !important;
+  }
+  a {  color: #ffffff !important; }
+  a:hover { text-decoration: underline; }
+  div.event-count,a.submit-link {
+      background: none !important;
+      color: #ffffff !important;
+    }
+    a.submit-link {
+      display: inline !important;
+      border-left: none !important;
+ 			padding: 3px 5px 3px 5px;
+    }
+}

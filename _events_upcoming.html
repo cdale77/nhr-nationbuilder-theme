@@ -1,0 +1,13 @@
+{% if page.calendar.event_name == "Event" %}
+	{% if page.calendar.events_upcoming.size > 0 %}
+		{% for event in page.calendar.events_upcoming limit: 3 %}
+			<div class="right-sidebar-calendar-events">
+				{% include "event" %}
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>Nothing scheduled right now. Check back soon!</p>
+	{% endif %}
+{% endif %}
+
+
