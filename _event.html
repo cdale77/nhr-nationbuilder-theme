@@ -1,3 +1,7 @@
+<li class="right-sidebar-link">
+<a href="{{ event.url }}" title="event-link">{{ event.event.local_start_at | date: '%b %d' }} -- {{ event.name }}</a>
+</li>
+{% comment %}
 <h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
 
 {% if event.event.content.size > 0 %}
@@ -47,3 +51,4 @@
   {% endif %}
 
 </div>
+{% endcomment %}

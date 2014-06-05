@@ -147,6 +147,7 @@
 
               </div>
               <div class="span4 footer-right footer-social-links">
+                {% comment %}
                 {% if site.has_facebook_page? %}<a href="{{ site.broadcaster.facebook_page_profile_url }}"><i class="icon-facebook-squared"></i></a>{% endif %}
                 {% if site.has_twitter? %}<a href="{{ site.broadcaster.twitter_profile_url }}"><i class="icon-twitter-squared"></i></a>{% endif %}
                 {% if page and page.has_rss? %}
@@ -154,6 +155,7 @@
                 {% elsif page and page.has_parent? and page.parent.has_rss? %}
                   <a href="{{ page.parent.rss_url }}"><i class="icon-rss"></i></a>
                 {% endif %}
+                {% endcomment %}
               </div>
             </div>
 
@@ -166,6 +168,7 @@
               <div class="row-fluid">
 
                 <div class="span8 footer-left">
+                  {% comment %}
                   {% if request.logged_in? %}
                     Hi <a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a>. View your
                     {% if site.show_public_profiles? %}
@@ -180,11 +183,36 @@
                        You can style it or move it in different ways, but please leave it in the footer. -->
                          Created with <a href="http://nationbuilder.com/">NationBuilder</a>
                   {% endif %}
+                  {% endcomment %}
+                  <div class="privacy-policy">
+                    <a href="http://creativecommons.org/licenses/by/4.0/" title="CC license">
+                      <img src="cc.png" alt="CC license" /></a> NH Rebellion.
+                    View our <a href="privacy_policy" title="Privacy policy">privacy policy</a>
+                  </div>
                 </div>
-                {% comment %}
                 <div class="span4 footer-right">
-
-                  {% if site.has_twitter? %}
+                  <div class="social-button" id="facebook-button">
+                    <a href="https://www.facebook.com/nhrebellion" title="Facebook">
+                    	<img src="facebook.svg" height="60px" width="60px" alt="Facebook" />
+                  </a>
+                  </div >
+                  <div class="social-button" id="twitter-button">
+                    <a href="https://twitter.com/nhrebellion" title="Twitter">
+                      <img src="twitter.svg" height="60px" width="60px" alt="Twitter" />
+                    </a>
+                  </div>
+                  <div class="social-button" id="youtube-button">
+                    <a href="https://www.youtube.com/user/NHRebellion" title="YouTube">
+                      <img src="youtube.svg" height="60px" width="60px" alt="YouTube" />
+                    </a>
+                  </div>
+                  <div class="social-button" id="flickr-button">
+                    <a href="https://www.flickr.com/groups/2460569@N24/pool/show/" title="Flickr">
+                      <img src="flickr.svg" height="60px" width="60px" alt="Flickr" />
+                    </a>
+                  </div>
+                  {% comment %} <!--default NB social -->
+                  {% if site.has_twitter? %} 
                   <div class="footer-social-button">
                     <a href="{{ site.broadcaster.twitter_profile_url }}" class="twitter-follow-button" data-show-count="false">Follow @{{ site.broadcaster.twitter_login }} on Twitter</a>
                   </div>
@@ -195,11 +223,10 @@
                   {% else %}
                   <div class="footer-social-button"><fb:like href="{{ site.full_url }}" colorscheme="dark" width="292"></fb:like></div>
                   {% endif %}
-
+                  {% endcomment %}
                 </div>
 
               </div>
-              {% endcomment %}
             </div>
 
           </footer>

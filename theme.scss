@@ -4,10 +4,14 @@
    ============================================================================ */
 
 //* style variables *//
+$nhr-shadow-grey: #DFDBDB;
 $nhr-grey: #2e2d2f;
 $nhr-blue: #334576;
+$nhr-link-blue: #2b79af;
 $nhr-hover-blue: #485884;
 $nhr-off-white: #FAFAFA;
+$nhr-red: #721723;
+$nhr-red-hover: #802F39;
 
 // headline font
 $headline-font: "Exo 2", Helvetica, sans-serif;
@@ -15,7 +19,8 @@ $headline-font: "Exo 2", Helvetica, sans-serif;
 // main font
 $font: "Open Sans", Helvetica, sans-serif;
 
-$theme-color-1: #9ac760;
+// $theme-color-1: #9ac760;
+$theme-color-1: $nhr-blue; /* BMJ */
 $theme-color-2: #fff;
 $theme-color-3: #1f1f1f;
 $theme-color-4: #2a292b;
@@ -75,7 +80,7 @@ $text-color: #2f2f2f;
 //$link-hover-color: #787878;
 $link-active-color: #000;
 
-$link-color: $nhr-blue;
+$link-color: $nhr-link-blue;
 $link-hover-color: $nhr-hover-blue;
 
 // buttons
@@ -237,6 +242,7 @@ a {
   text-decoration: none;
   outline: none;
   &:hover {
+    text-decoration: underline;
     color: $link-hover-color;
   }
   &:active {
@@ -246,9 +252,9 @@ a {
 
 p {
   margin-bottom: 1.625em;
-  a {
+/*  a {
     text-decoration: underline;
-  }
+  } */
 }
 
 hr {
@@ -626,7 +632,7 @@ nav {
         height: 1px;
         z-index: -1;
         border-right: 9999px solid lighten($off-canvas-background-color,30);
-        @include box-shadow(9999px 0 0 0 lighten($off-canvas-background-color,30));
+        @include box-shadow(9999px 0 0 0 $nhr-shadow-grey); /* BMJ */
       }
       &:last-child {
         margin-bottom: 0;
@@ -976,7 +982,7 @@ footer {
   position: relative;
   z-index: 10;
   a {
-    color: $footer-link-color;
+    color: $theme-color-1; /* BMJ */
   }
   .footer-text p {
     margin: 0;
@@ -1093,7 +1099,7 @@ footer {
         color: $off-canvas-background-color;
       }
       &:before {
-        content: "";
+        /*content: "";*/  /*BMJ*/
         position: absolute;
         top: 0;
         bottom: 0;
@@ -2296,14 +2302,23 @@ ul.homepage_excerpt-list {
 /* Styles here overide the defaults specified above. To revert 
 to the theme default, simply comment out these rules */
 
+.submit-button { border-left: none; }
+.submit-link { border-left: none; }
+.button { border-left: none; }
+
+
 /* nav */
 .menu-link {
   margin-top: .5em;
   margin-bottom: .5em;
 }
 
+nav a:hover { 
+  text-decoration: none;
+}
+
 header {
-  padding: .8em;
+  padding: .8em !important;
 }
 
 /* sidebar styles */
@@ -2328,44 +2343,237 @@ border:none;
 padding:0;
 }
 
+h2 {font-family: 'Roboto Slab', serif;
+font-style: normal;
+font-weight: 400;
+font-size: 300%;
+
+border:none;
+padding:0;
+}
+
 .menu-link {
   background-color: $nhr-grey;
 }
 
 
 /* sidebar styles */
-span#right-sidebar-header {
-  font-size: 1.45em;
-  color: #ffffff !important;
-  display: block;
+
+ul.supporter-nav { 
+  padding-bottom: 1.25em !important;
+ 	margin-bottom: 1.25em !important;
 }
 
-span.right-sidebar-subheader {
-  font-size: 1.1em;
-  color: #ffffff !important;
-  display: block;
+.supporter-nav li a {
+  padding: 0;
 }
 
-span.right-sidebar-link {
-  font-size: 110%;
-  color: #ffffff !important;
-  display: block;
-}
+div.right-column { padding-top: 2em !important; }
 
-div.right-sidebar-calendar-events {
-  h4 { 
-    font-weight: normal !important;
-    font-size: 100% !important;
+ul#right-sidebar-header {
+  font-family: 'Roboto Slab', serif !important;
+  color: $nhr-red !important;
+  font-size: 175%;
+  font-weight: 600;
+  padding-bottom: .5em !important;
+	margin-bottom: .5em !important;
+  padding-left: none !important;
+  li {
+      color: $nhr-red !important;
+    &.on, &:hover {
+      margin-left: -2.35em;
+      padding-left: 2.35em;
+      background: none;
+      &:before {
+        border-right: none;
+      }
+    }
   }
-  a {  color: #ffffff !important; }
-  a:hover { text-decoration: underline; }
-  div.event-count,a.submit-link {
-      background: none !important;
-      color: #ffffff !important;
+}
+
+ul.right-sidebar-subheader {
+  li {
+    &.on, &:hover {
+        background-color: $nhr-blue;
+      a { color: white !important; }
+      i { color: white !important; }
+      margin-left: -2.35em;
+      padding-left: 2.35em;
+      &:before {
+        border-right: none;
+      }
     }
-    a.submit-link {
-      display: inline !important;
-      border-left: none !important;
- 			padding: 3px 5px 3px 5px;
+  }
+}
+
+ul.supporter-nav li i { color: $nhr-blue !important; }
+
+div.right-sidebar-subheader {
+  font-size: 130%;
+  color: $nhr-grey;
+  padding-bottom: 1em;
+  /*padding-left: 1.5em !important;*/
+}
+
+li.right-sidebar-top-link  {
+  font-size: 130%;
+}
+
+.twocolumn-container .right-column::before{
+-webkit-box-shadow: 9999px 99999px 0 #FAF9F9;
+-moz-box-shadow: 9999px 99999px 0 #FAF9F9;
+box-shadow: 9999px 99999px 0 #FAF9F9;
+}
+
+
+.right-column {
+  a:hover { text-decoration: none; }
+}
+
+.right-column li {
+color: #999999 !important;
+}
+  
+.right-column li.right-sidebar-link a {
+  color:$nhr-link-blue !important;
+
+}
+
+.supporter-nav  a {
+  color:$nhr-link-blue !important;
+}
+
+i.icon-right-open { 
+  float: right;
+	color: $nhr-link-blue !important;
+}
+
+.twocolumn-container .right-column:before, .twocolumn-container .left-column-narrow:before {
+  border-right: none;
+}
+
+.twocolumn-container .right-column .block:after, .twocolumn-container .left-column-narrow .block:after {
+  content: none;
+}
+
+.large {
+font-size: 250% !important;
+font-weight: 200 !important; 
+font-family: helvetica neue !important;
+color: #9E9999 !important;
+line-height: 100% !important;
+text-align: center !important;
+}
+
+#plan  li{
+text-decoration:none !important;
+  /*float:left !important; */
+  /*width:33.3% !important; */
+  list-style: none;
+  padding-right: 5.25%;
+}
+
+/* footer */
+footer {
+  a { color: $nhr-blue; }
+  a:hover { 
+      color: $nhr-hover-blue; 
+      text-decoration: underline;
     }
+  color: $nhr-grey;
+}
+
+div.social-button { 
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.cta{
+  color: $nhr-link-blue !important;
+  font-size:130% !important;
+  text-decoration:none !important;
+  display: block !important;
+  margin-top: 10px !important;
+}
+
+.cta:hover{
+color: $nhr-red !important;
+}
+
+.cta em.icon-right-open{
+position:relative;
+top: 3px;
+left: 3px;
+font-size: 120%;
+}
+
+/* donate */
+span.stage-count-inner {
+  color: white !important;
+}
+
+span.progress-stage-button-next {
+  color: white !important;
+}
+
+/*###### Bottom Image CSS ######## */
+img.rebels{
+max-width: 125%;
+height: auto;
+vertical-align: middle;
+border: none;
+position:relative;
+left:-120px;
+}
+.twocolumn-container {
+padding-bottom:0  !important;
+}
+
+p.bottom{
+margin-bottom:0;
+}
+
+
+/* calendar */
+.event-wrap li {
+  margin-bottom: 1.5em !important;
+}
+
+/*###### Bottom Image CSS ######## */
+img.rebels {
+max-width: 125%;
+height: auto;
+vertical-align: middle;
+border: none;
+position:relative;
+left:-120px;
+}
+.twocolumn-container {
+padding-bottom:0  !important;
+}
+
+p.bottom{
+margin-bottom:0;
+}
+
+h3.register{
+
+font-family: 'Open Sans', Helvetica, sans-serif;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+border-bottom: solid 1px #999;
+padding-bottom: 20px;  
+
+}
+.join{
+padding-top: 35px;
+border-top: solid 1px #999;
+margin-top: 40px;
+font-size: 135%;
+}
+
+h2.schedule{
+font-size: 90%;
+padding-top: 20px;  
 }

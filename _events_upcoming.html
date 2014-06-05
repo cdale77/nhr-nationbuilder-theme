@@ -1,6 +1,6 @@
 {% if page.calendar.event_name == "Event" %}
 	{% if page.calendar.events_upcoming.size > 0 %}
-		{% for event in page.calendar.events_upcoming limit: 3 %}
+		{% for event in page.calendar.events_upcoming limit: 4 %}
 			<div class="right-sidebar-calendar-events">
 				{% include "event" %}
 			</div>

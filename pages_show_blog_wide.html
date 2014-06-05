@@ -39,7 +39,7 @@
   {% endif %}
 
   <div class="blog row-fluid" id="blog-page-{{ page.id }}">
-    <div class="span6 blog-column-1">
+    <div class="span12 blog-column-1">
       {% for post in page.blog.most_recent_blog_posts %}
       <div class="page-excerpt padbottom" id="blog-post-page-{{ post.id }}">
         <h3><a href="{{ post.url }}">{{ post.headline }}</a></h3>

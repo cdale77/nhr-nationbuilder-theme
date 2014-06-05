@@ -1,10 +1,19 @@
-<span id="right-sidebar-header">Get Involved</span>
-<span class="right-sidebar-subheader">Walk with NHR</span>
-{% subpage "walk_calendar" with "walks_upcoming" %}
-<span class="right-sidebar-subheader">Events</span>
-{% subpage "calendar" with "events_upcoming" %}
-<ul class="supporter-nav block">
-  <li class="right-sidebar-link"><a href="petition" class="right-sidebar-link">Sign the Petition</a></li>
-  <li class="right-sidebar-link"><a href="donate" class="right-sidebar-link">Donate to NHR</a></li>
-  <li class="right-sidebar-link"><a href="#" class="spread-the-word">Spread the Word</a></li>
+<ul class="supporter-nav block" id="right-sidebar-header">
+	<li>Get Involved</li>
+ </ul>
+<div class="right-sidebar-subheader">Walk with NHR</div>
+<ul class="supporter-nav block right-sidebar-subheader">
+	{% subpage "walk_calendar" with "walks_upcoming" %}
+</ul>
+<div class="right-sidebar-subheader">Events</div>
+<ul class="supporter-nav block right-sidebar-subheader">
+	{% subpage "calendar" with "events_upcoming" %}
+</ul>
+<ul class="supporter-nav block right-sidebar-subheader">
+  <li class="right-sidebar-top-link">
+    <a href="http://www.nhrebellion.org/sign_the_petition" class="right-sidebar-link">Sign the Petition <i class="icon-right-open"></i></a>
+  </li>
+  <li class="right-sidebar-top-link"><a href="http://www.nhrebellion.org/donate" class="right-sidebar-link">Donate to NHR<i class="icon-right-open"></i></a></li>
+  <!--<li class="right-sidebar-top-link"><a href="#" class="spread-the-word">Spread the Word<i class="icon-right-open"></i></a></li>--
+	-->
 </ul>

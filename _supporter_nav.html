@@ -31,8 +31,10 @@
 {% endif %}
 
 
+{% comment %}
+
 <ul class="supporter-nav block">
-<!--
+
   {% for child in site.supporter_pages %}
   <li {% if page == child %}class="on"{% endif %}><a href="{{ child.url }}">{{ child.icon | icon }} {{ child.name }}</a></li>
   {% endfor %}
@@ -47,7 +49,7 @@
   {% else %}
   <li><a href="{{ request.current_signup.settings_url }}"><i class="icon-cog"></i> Settings</a></li>
   {% endif %}
--->
+
 
   {% if page and page.is_editing_available? %}
   <li><a href="{{ page.edit_url }}"><i class="icon-edit"></i> Edit this page</a></li>
@@ -94,3 +96,4 @@
   </div>
 </div>
 {% endif %}
+{% endcomment %}
