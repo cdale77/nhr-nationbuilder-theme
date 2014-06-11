@@ -60,7 +60,7 @@
       <div id="body" class="page-{{ request.template | replace: '_', '-' }}">
 
         <div class="header-container clearfix {% if site.has_background_image? %}no-background{% endif %}">
-          <div class="width-container clearfix">
+          <div class="width-container clearfix" id="nav-container">
 
             {% include "nav" %}
 

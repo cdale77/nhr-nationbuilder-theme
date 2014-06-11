@@ -12,6 +12,7 @@ $nhr-off-white: #FAFAFA;
 $nhr-red: #721723;
 $nhr-red-hover: #802F39;
 
+
 // headline font
 $headline-font: "Exo 2", Helvetica, sans-serif;
 
@@ -1626,4 +1627,9 @@ div.byline {
   background: #EBECF1 !important;
   a { color: $nhr-link-blue !important; }
   a:hover { color: $nhr-hover-blue !important; }
+}
+
+/* override mobile stylesheet to restore original menu padding on desktop views */
+div#nav-container {
+  padding: 0 1.5% !important;
 }

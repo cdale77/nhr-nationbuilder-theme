@@ -2309,9 +2309,12 @@ to the theme default, simply comment out these rules */
 
 /* nav */
 .menu-link {
-  margin-top: .5em;
-  margin-bottom: .5em;
+  /*height: 83px;*/
+  border-radius: 0px;
+  width: 15%;
 }
+
+i.icon-menu { vertical-align: -45% }
 
 nav a:hover { 
   text-decoration: none;
@@ -2546,7 +2549,7 @@ height: auto;
 vertical-align: middle;
 border: none;
 position:relative;
-left:-120px;
+left: -6%;
 }
 .twocolumn-container {
 padding-bottom:0  !important;
@@ -2577,3 +2580,33 @@ h2.schedule{
 font-size: 90%;
 padding-top: 20px;  
 }
+
+
+
+/* move the menu link flush with left edge of screen on mobile */
+div#nav-container {
+  padding: 0px !important;
+}
+
+@media (min-width: 640px) {
+  #leftside {
+    width:60%;
+display:block;
+float:left;
+  padding-right:3%;
+  }
+
+.rightside{
+display:block;
+  float:left;
+  width:30%;
+}
+
+.little{
+font-size: 80%;
+padding-top: 2%;
+
+}
+
+}
+
