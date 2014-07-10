@@ -2517,6 +2517,11 @@ font-size: 120%;
 }
 
 /* donate */
+li.progress-indicator-stage {
+  text-indent: 0;
+  padding-left: 0;
+}
+
 span.stage-count-inner {
   color: white !important;
 }
