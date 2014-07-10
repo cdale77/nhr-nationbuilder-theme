@@ -2359,6 +2359,12 @@ padding:0;
   background-color: $nhr-grey;
 }
 
+// Hanging indent with list-style-position: inside; set above.
+#content ul,
+#content ol {
+  text-indent: -1em;
+  padding-left: 1em;
+}
 
 /* sidebar styles */
 
