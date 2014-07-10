@@ -2610,3 +2610,11 @@ padding-top: 2%;
 
 }
 
+ul {
+  padding-bottom: 3%;
+}
+
+/* make normal text in the right sidebar grey, not white */
+p.sidebar-message {
+  color: $nhr-grey;
+}
