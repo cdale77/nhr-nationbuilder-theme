@@ -2359,6 +2359,12 @@ padding:0;
   background-color: $nhr-grey;
 }
 
+// Hanging indent with list-style-position: inside; set above.
+#content ul,
+#content ol {
+  text-indent: -1em;
+  padding-left: 1em;
+}
 
 /* sidebar styles */
 
@@ -2478,9 +2484,9 @@ text-decoration:none !important;
 
 /* footer */
 footer {
-  a { color: $nhr-blue; }
+  a { color: $nhr-link-blue; }
   a:hover { 
-      color: $nhr-hover-blue; 
+      color: $nhr-hover-blue;
       text-decoration: underline;
     }
   color: $nhr-grey;
@@ -2511,6 +2517,11 @@ font-size: 120%;
 }
 
 /* donate */
+li.progress-indicator-stage {
+  text-indent: 0;
+  padding-left: 0;
+}
+
 span.stage-count-inner {
   color: white !important;
 }
@@ -2610,3 +2621,11 @@ padding-top: 2%;
 
 }
 
+ul {
+  padding-bottom: 3%;
+}
+
+/* make normal text in the right sidebar grey, not white */
+p.sidebar-message {
+  color: $nhr-grey;
+}
