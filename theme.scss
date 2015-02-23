@@ -2359,12 +2359,6 @@ padding:0;
   background-color: $nhr-grey;
 }
 
-// Hanging indent with list-style-position: inside; set above.
-#content ul,
-#content ol {
-  text-indent: -1em;
-  padding-left: 1em;
-}
 
 /* sidebar styles */
 
@@ -2628,4 +2622,21 @@ ul {
 /* make normal text in the right sidebar grey, not white */
 p.sidebar-message {
   color: $nhr-grey;
+}
+
+/* Hanging indent with list-style-position: inside; set above. */
+ #content ul,ol {
+   text-indent: -1em;
+   padding-left: 1em;
+ }
+
+
+ /* Hanging indent with list-style-position: inside; set above. */
+ ul#plan {
+   text-indent: 0em;
+   padding-left: 0em;
+ }
+
+hr.bottom{
+margin-bottom:0;
 }

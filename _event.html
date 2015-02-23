@@ -1,54 +1,149 @@
-<li class="right-sidebar-link">
-<a href="{{ event.url }}" title="event-link">{{ event.event.local_start_at | date: '%b %d' }} &ndash; {{ event.name }}</a>
-</li>
-{% comment %}
-<h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
+<div class="padcontainer">
 
-{% if event.event.content.size > 0 %}
-<div class="truncate-200 event-description" data-truncate="200">
-  {{ event.event.content }}
-</div>
-{% endif %}
+  {% include "breadcrumbs" %}
 
-<div class="clearfix">
+  <div class="content-container">
 
-  <div class="event-info">
-    {{ event.event.local_start_at | date: '%A, %B %d, %Y at %I:%M %p' }}
-    {% if event.event.is_multi_day? %}
-    through {{ event.event.local_end_at | event_date }}
+    {% if page.headline.size > 0 %}
+    <h2 class="headline">{{ page.headline }}</h2>
     {% endif %}
-    {% if event.event.is_ticket_required? %}
-    &middot; {{ event.event.ticket_price_with_currency }}
-    {% elsif event.event.is_user_ticket_required? %}
-    &middot; {{ event.event.user_ticket_price_with_currency }}
-    {% endif %}
-    {% if event.event.show_guests? and event.event.rsvps_count > 0 %}
-    &middot;
-    <a href="{{ event.url }}">{{ event.event.rsvps_count }} rsvp{% if event.event.rsvps_count > 1 %}s{% endif %}</a>
-    {% endif %}
-    {% if event.event.has_venue? %}
-    <div class="event-venue">
-      {% if event.event.has_venue_address? %}
-      <a href="{{ event.event.venue_address.google_map_link }}">{{ event.event.venue_name }}</a>
-      in
-      {{ event.event.venue_address.location }}
-      {% else %}
-      {{ event.event.venue_name }}
+
+    <div id="content">
+
+      {% if page.calendar.content.size > 0 %}
+      <div id="intro" class="intro">
+        {{ page.calendar.content }}
+      </div>
       {% endif %}
+
+      {% if page.calendar.is_proximity? %}
+
+      <div class="padbottommore">
+
+        {% form_for address_change %}
+
+        <div class="form-wrap">
+          <div class="form">
+
+           {% if page.calendar.events_upcoming_nearby_count > 0 %}
+            {% if page.calendar.events_upcoming_nearby_count > 1 %}
+            <div class="padtop map-wrap">
+              <strong>Found {{ page.calendar.events_upcoming_nearby_count }} {{ page.calendar.event_name | pluralize | downcase }}.</strong>
+            </div>
+            {% endif %}
+            <div class="padbottom">
+              <div class="map">{{ page.calendar.events_upcoming_nearby_map }}</div>
+            </div>
+            {% else %}
+            <div class="padbottommore">
+              <strong>No {{ page.calendar.event_name | pluralize | downcase }} found nearby,</strong> try widening your search
+              {% if page.calendar.allow_user_submitted? %}
+              or maybe
+              <a href="{{ page.calendar.new_event_url }}">host your own</a>?
+              {% endif %}
+            </div>
+            {% if page.calendar.events_upcoming.size > 0 %}
+            <div class="map-wrap padbottom">
+              <div class="showing-all padtopless">Showing all {{ page.calendar.events_upcoming_count }} {{ page.calendar.event_name | pluralize | downcase }} instead.</div>
+              {{ page.calendar.events_upcoming_map }}
+            </div>
+            {% endif %}
+            {% endif %}
+
+            <h4>Find {{ page.calendar.event_name | pluralize | downcase }} near you</h4>
+
+            <div class="padtop padbottom">{% text_field "submitted_address", class:"text", placeholder:"Address or postal code" %}
+              <div class="padtopless distance"><span class="within">within</span>
+                <span class="radio-inline">{{ page.calendar.distance_radio_buttons }}</span></div>
+            </div>
+
+            <div>
+              {% submit_tag "Search", class:"submit-button" %}
+              {% if page.calendar.allow_user_submitted? %}
+              <span class="button button-alt"><a href="{{ page.calendar.new_event_url }}">Host your own event</a></span>
+              {% endif %}
+              <div class="form-submit"></div>
+            </div>
+
+          </div>
+        </div>
+
+        {% endform_for %}
+
+      </div>
+
+      {% if page.calendar.events_upcoming_nearby.size > 0 %}
+
+      <ul class="event-wrap">
+        {% for event in page.calendar.events_upcoming_nearby %}
+          {% include "event" %}
+        {% endfor %}
+      </ul>
+
+      {{ page.calendar.events_upcoming_nearby | paginate prev_label: "&laquo;" next_label: "&raquo;" }}
+
+      {% else %}
+
+      <ul class="event-wrap">
+        {% for event in page.calendar.events_upcoming %}
+          {% include "event" %}
+        {% endfor %}
+      </ul>
+
+      {{ page.calendar.events_upcoming | paginate prev_label: "&laquo;" next_label: "&raquo;" }}
+
+      {% endif %}
+
+      {% else %}
+
+      {% if page.calendar.show_map? %}
+
+      {% if page.calendar.events_upcoming_count > 0 %}
+
+      <div class="padbottommore">
+        <div class="form-wrap">
+          <div class="form">
+            <div class="padtop map-wrap">
+              {{ page.calendar.events_upcoming_map }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+
+      {% endif %}
+
+      {% if page.calendar.events_upcoming_count == 0 %}
+
+      No {{ page.calendar.event_name | pluralize | downcase }} yet.
+      {% if page.calendar.allow_user_submitted? %}
+      You should
+      <a href="{{ page.calendar.new_event_url }}">host your own</a>!
+      {% endif %}
+
+      {% else %}
+
+      <ul class="event-wrap">
+        {% for event in page.calendar.events_upcoming %}
+          {% include "event" %}
+        {% endfor %}
+      </ul>
+
+      {% if page.calendar.allow_user_submitted? %}
+      <div class="padtopmore">
+        <a class="submit-link" href="{{ page.calendar.new_event_url }}">Host your own {{ page.calendar.event_name | downcase }}</a>
+      </div>
+      {% endif %}
+
+      <div class="padtop">
+        {{ page.calendar.events_upcoming | paginate prev_label: "&laquo;" next_label: "&raquo;" }}
+      </div>
+
+      {% endif %}
+
+      {% endif %}
+
     </div>
-    {% endif %}
-    <div class="pc event-count">{{ event.event.rsvps_count }} RSVPs</div>
   </div>
-
-  {% if event.event.is_maximum_capacity? %}
-  <a class="button destroy-link" href="{{ event.url }}">sold out</a>
-  {% elsif event.event.is_past? == false %}
-    {% if event.event.is_ticket_required? %}
-      <a class="submit-link" href="{{ event.url }}">buy tickets</a>
-    {% elsif event.event.accept_rsvps? %}
-      <a class="submit-link" href="{{ event.url }}">rsvp</a>
-    {% endif %}
-  {% endif %}
-
 </div>
-{% endcomment %}
